@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+    <h:head>
+        <title>Ready to Register?</title>
+    </h:head>
+    <h:body>
+        <h:form id="registerform">
+            <h:panelGrid columns="2">
+                <f:facet name="header">Enter your credentials</f:facet>
+                <h:outputLabel value="Name: "/>
+                <h:inputText id="regname" required="true" requiredMessage="Name cannot be empty!"/>
+                <h:outputLabel value="Email: "/>
+                <h:inputText id="regmail" required="true" requiredMessage="Email cannot be empty!"/>
+                <h:outputLabel value="Username: "/>
+                <h:inputText id="regusername" required="true" requiredMessage="Username cannot be empty!"/>
+                <h:outputLabel value="Password: "/>
+                <h:inputSecret id="regpassword" required="true" requiredMessage="Password cannot be empty!"/>
+                <f:facet name="footer">
+                    <h:commandButton id="createUserBtn" value="Register"/>
+                    <h:commandButton id="cancelUserBtn" value="Cancel" type="reset"/>
+                </f:facet>
+            </h:panelGrid>
+        </h:form>
+        <br/>
+        <p><h:link outcome="/index" value="To Home Page" /></p>
+    </h:body>
+</html>
+

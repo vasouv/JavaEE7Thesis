@@ -3,7 +3,6 @@
 This is my JavaEE 7 thesis project. Ultimately it will be a web application, allowing the user to register to online courses and watch material to learn subjects.
 
 ##Tools used##
-The project is a Maven one, created with NetBeans 8.0 and uses JavaSE 8 and JavaEE 7. It's built and deployed on GlassFish 4.0, while the RDBMS is JavaDB pre-installed with the JDK. The presentation layer is built with JavaServer Faces 2.2.
 ![NetBeans](https://netbeans.org/images_www/visual-guidelines/NB-IDE-logo.png) | ![Glassfish 4.0](https://dl.dropboxusercontent.com/u/5212783/github%20repo/glassfish_logo.png)
 ------------
 ![Java SE 8](https://dl.dropboxusercontent.com/u/5212783/github%20repo/java8-logo.png) | ![Java EE 7](https://dl.dropboxusercontent.com/u/5212783/github%20repo/java%20ee%20pic.png)

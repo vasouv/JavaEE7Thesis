@@ -2,19 +2,20 @@ package vasouv.javaee7thesis.register;
 
 import java.io.Serializable;
 import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 
 /**
  *
  * @author vasouv
  */
-@RequestScoped
+@SessionScoped
 @Named("registerNewUser")
 public class RegisterUserJSFBean implements Serializable {
     
     //here will be the EJB
-    private User user;
-    private Groups group;
+    private User user = new User();
+    private Groups group = new Groups();
     
     //These are the four properties that the user enters in the form
     private String username;
@@ -26,9 +27,35 @@ public class RegisterUserJSFBean implements Serializable {
      * Creates a new instance of RegisterUserManagedBean
      */
     public RegisterUserJSFBean() {
-        user = new User();
-        group = new Groups();
+        this.username = "";
+        this.password = "";
+        this.name = "";
+        this.email = "";
+        System.out.println("Created the bean");
     }
+    
+    /**
+     * Registers the new user and navigates to the registersuccess.xhtml
+     * @return 
+     */
+    public String registerNewUser() {
+        getUser().setId(22);
+        getUser().setName(this.name);
+        getUser().setEmail(this.email);
+        getUser().setUsername(this.username);
+        getUser().setPassword(this.password);
+//        user.setId(22);
+//        user.setName(name);
+//        user.setEmail(email);
+//        user.setUsername(username);
+//        user.setPassword(password);
+//        group.setUsername(username);
+//        group.setGroupname("users");
+        System.out.println("Called the register method");
+        System.out.println(username + password + name + email);
+        return "/registersuccess.xhtml";
+    }
+    
     
     /**
      * GETTERS AND SETTERS

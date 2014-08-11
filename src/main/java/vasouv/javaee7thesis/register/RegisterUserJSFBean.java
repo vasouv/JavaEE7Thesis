@@ -9,7 +9,7 @@ import javax.inject.Named;
  *
  * @author vasouv
  */
-@SessionScoped
+@RequestScoped
 @Named("registerNewUser")
 public class RegisterUserJSFBean implements Serializable {
     
@@ -27,11 +27,7 @@ public class RegisterUserJSFBean implements Serializable {
      * Creates a new instance of RegisterUserManagedBean
      */
     public RegisterUserJSFBean() {
-        this.username = "";
-        this.password = "";
-        this.name = "";
-        this.email = "";
-        System.out.println("Created the bean");
+
     }
     
     /**
@@ -44,15 +40,9 @@ public class RegisterUserJSFBean implements Serializable {
         getUser().setEmail(this.email);
         getUser().setUsername(this.username);
         getUser().setPassword(this.password);
-//        user.setId(22);
-//        user.setName(name);
-//        user.setEmail(email);
-//        user.setUsername(username);
-//        user.setPassword(password);
-//        group.setUsername(username);
-//        group.setGroupname("users");
-        System.out.println("Called the register method");
-        System.out.println(username + password + name + email);
+        getGroup().setUsername(this.username);
+        getGroup().setGroupname("users");
+        
         return "/registersuccess.xhtml";
     }
     

@@ -1,8 +1,10 @@
 package vasouv.javaee7thesis.register;
 
 import java.io.Serializable;
+import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.enterprise.context.SessionScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
 
 /**
@@ -12,11 +14,17 @@ import javax.inject.Named;
 @RequestScoped
 @Named("registerNewUser")
 public class RegisterUserJSFBean implements Serializable {
-    
+
     //here will be the EJB
-    private User user = new User();
-    private Groups group = new Groups();
-    
+    @EJB
+    private UserFacade userEJB;
+    @EJB
+    private GroupsFacade groupEJB;
+
+    //The entities
+    private User user;
+    private Groups group;
+
     //These are the four properties that the user enters in the form
     private String username;
     private String password;
@@ -27,30 +35,32 @@ public class RegisterUserJSFBean implements Serializable {
      * Creates a new instance of RegisterUserManagedBean
      */
     public RegisterUserJSFBean() {
-
+        //user = new User();
+        //group = new Groups();
     }
-    
+
     /**
      * Registers the new user and navigates to the registersuccess.xhtml
-     * @return 
+     *
+     * @return
      */
     public String registerNewUser() {
-        getUser().setId(22);
-        getUser().setName(this.name);
-        getUser().setEmail(this.email);
-        getUser().setUsername(this.username);
-        getUser().setPassword(this.password);
-        getGroup().setUsername(this.username);
-        getGroup().setGroupname("users");
-        
+        user.setId(22);
+        user.setName(this.name);
+        user.setEmail(this.email);
+        user.setUsername(this.username);
+        user.setPassword(this.password);
+        group.setUsername(this.username);
+        group.setGroupname("users");
+
+        userEJB.persistUser(user);
+
         return "/registersuccess.xhtml";
     }
-    
-    
+
     /**
      * GETTERS AND SETTERS
      */
-
     public User getUser() {
         return user;
     }
@@ -98,5 +108,5 @@ public class RegisterUserJSFBean implements Serializable {
     public void setEmail(String email) {
         this.email = email;
     }
-    
+
 }

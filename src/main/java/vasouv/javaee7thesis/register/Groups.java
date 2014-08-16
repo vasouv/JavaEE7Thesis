@@ -23,10 +23,10 @@ import javax.validation.constraints.Size;
  */
 @Entity
 @Table(name = "GROUPS")
-@NamedQueries({
-    @NamedQuery(name = "Groups.findAll", query = "SELECT g FROM Groups g"),
-    @NamedQuery(name = "Groups.findByUsername", query = "SELECT g FROM Groups g WHERE g.username = :username"),
-    @NamedQuery(name = "Groups.findByGroupname", query = "SELECT g FROM Groups g WHERE g.groupname = :groupname")})
+//@NamedQueries({
+//    @NamedQuery(name = "Groups.findAll", query = "SELECT g FROM Groups g"),
+//    @NamedQuery(name = "Groups.findByUsername", query = "SELECT g FROM Groups g WHERE g.username = :username"),
+//    @NamedQuery(name = "Groups.findByGroupname", query = "SELECT g FROM Groups g WHERE g.groupname = :groupname")})
 public class Groups implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id

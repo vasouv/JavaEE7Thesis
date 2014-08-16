@@ -4,7 +4,7 @@
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
               xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
     <managed-bean>
-        <managed-bean-name>registerUserManagedBean</managed-bean-name>
+        <managed-bean-name>registerNewUser</managed-bean-name>
         <managed-bean-class>vasouv.javaee7thesis.register.RegisterUserJSFBean</managed-bean-class>
         <managed-bean-scope>request</managed-bean-scope>
     </managed-bean>

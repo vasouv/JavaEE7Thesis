@@ -1,9 +1,12 @@
 package vasouv.javaee7thesis.register;
 
 import java.io.Serializable;
+import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
+import vasouv.javaee7thesis.register.sessionbeans.GroupsFacade;
+import vasouv.javaee7thesis.register.sessionbeans.UserFacade;
 
 /**
  *
@@ -14,6 +17,11 @@ import javax.inject.Named;
 public class RegisterUserJSFBean implements Serializable {
     
     //here will be the EJB
+    @EJB
+    UserFacade userEJB;
+    @EJB
+    GroupsFacade groupEJB;
+    
     private User user = new User();
     private Groups group = new Groups();
     
@@ -35,13 +43,15 @@ public class RegisterUserJSFBean implements Serializable {
      * @return 
      */
     public String registerNewUser() {
-        getUser().setId(22);
-        getUser().setName(this.name);
-        getUser().setEmail(this.email);
-        getUser().setUsername(this.username);
-        getUser().setPassword(this.password);
-        getGroup().setUsername(this.username);
-        getGroup().setGroupname("users");
+        user.setId(22);
+        user.setName(this.name);
+        user.setEmail(this.email);
+        user.setUsername(this.username);
+        user.setPassword(this.password);
+        group.setUsername(this.username);
+        group.setGroupname("users");
+        
+        userEJB.persistUser(user);
         
         return "/registersuccess.xhtml";
     }

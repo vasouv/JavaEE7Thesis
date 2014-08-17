@@ -10,16 +10,16 @@
         <h:form id="registerform">
             <h:panelGrid columns="2">
                 <f:facet name="header">Enter your credentials</f:facet>
-                <h:outputLabel value="Name: "/>
-                <h:inputText id="regname" required="true" requiredMessage="Name cannot be empty!"/>
-                <h:outputLabel value="Email: "/>
-                <h:inputText id="regmail" required="true" requiredMessage="Email cannot be empty!"/>
-                <h:outputLabel value="Username: "/>
-                <h:inputText id="regusername" required="true" requiredMessage="Username cannot be empty!"/>
-                <h:outputLabel value="Password: "/>
-                <h:inputSecret id="regpassword" required="true" requiredMessage="Password cannot be empty!"/>
+                <h:outputLabel for="regname" value="Name: "/>
+                <h:inputText id="regname" value="#{registerNewUser.name}" required="true" requiredMessage="Name cannot be empty!"/>
+                <h:outputLabel for="regmail" value="Email: "/>
+                <h:inputText id="regmail" value="#{registerNewUser.email}" required="true" requiredMessage="Email cannot be empty!"/>
+                <h:outputLabel for="regusername" value="Username: "/>
+                <h:inputText id="regusername" value="#{registerNewUser.username}" required="true" requiredMessage="Username cannot be empty!"/>
+                <h:outputLabel for="regpassword" value="Password: "/>
+                <h:inputSecret id="regpassword" value="#{registerNewUser.password}" required="true" requiredMessage="Password cannot be empty!"/>
                 <f:facet name="footer">
-                    <h:commandButton id="createUserBtn" value="Register"/>
+                    <h:commandButton id="createUserBtn" value="Register" action="#{registerNewUser.registerNewUser()}"/>
                     <h:commandButton id="cancelUserBtn" value="Cancel" type="reset"/>
                 </f:facet>
             </h:panelGrid>

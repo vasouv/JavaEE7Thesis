@@ -7,7 +7,6 @@
 package vasouv.javaee7thesis.register.sessionbeans;
 
 import javax.ejb.Stateless;
-import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import vasouv.javaee7thesis.register.Groups;
@@ -16,7 +15,6 @@ import vasouv.javaee7thesis.register.Groups;
  *
  * @author vasouv
  */
-@Named
 @Stateless
 public class GroupsFacade extends AbstractFacade<Groups> {
     @PersistenceContext(unitName = "vasouvPU")

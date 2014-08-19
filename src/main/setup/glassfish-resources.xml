@@ -35,7 +35,7 @@
     <property name="serverName" value="localhost"/>
     <property name="PortNumber" value="1527"/>
     <property name="DatabaseName" value="jdbcrealm"/>
-    <property name="User" value="root"/>
+    <property name="User" value="APP"/>
     <property name="Password" value="admin"/>
   </jdbc-connection-pool>
 </resources>

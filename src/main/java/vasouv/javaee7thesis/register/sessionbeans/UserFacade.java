@@ -7,7 +7,6 @@
 package vasouv.javaee7thesis.register.sessionbeans;
 
 import javax.ejb.Stateless;
-import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import vasouv.javaee7thesis.register.User;
@@ -16,14 +15,14 @@ import vasouv.javaee7thesis.register.User;
  *
  * @author vasouv
  */
-@Named
 @Stateless
 public class UserFacade extends AbstractFacade<User> {
     @PersistenceContext(unitName = "vasouvPU")
     private EntityManager em;
     
-    public void persistUser(User us) {
-        em.persist(us);
+    @Override
+    public void create(User u) {
+        em.persist(u);
     }
 
     @Override

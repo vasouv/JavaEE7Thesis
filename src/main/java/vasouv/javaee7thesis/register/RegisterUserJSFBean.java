@@ -1,6 +1,7 @@
 package vasouv.javaee7thesis.register;
 
 import java.io.Serializable;
+import javax.annotation.ManagedBean;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.enterprise.context.SessionScoped;
@@ -43,7 +44,7 @@ public class RegisterUserJSFBean implements Serializable {
      * @return 
      */
     public String registerNewUser() {
-        user.setId(22);
+        user.setId(44);
         user.setName(this.name);
         user.setEmail(this.email);
         user.setUsername(this.username);
@@ -51,7 +52,7 @@ public class RegisterUserJSFBean implements Serializable {
         group.setUsername(this.username);
         group.setGroupname("users");
         
-        userEJB.persistUser(user);
+        userEJB.create(user);
         
         return "/registersuccess.xhtml";
     }

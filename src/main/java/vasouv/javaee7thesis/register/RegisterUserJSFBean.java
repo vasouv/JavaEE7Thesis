@@ -1,10 +1,8 @@
 package vasouv.javaee7thesis.register;
 
 import java.io.Serializable;
-import javax.annotation.ManagedBean;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
-import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 import vasouv.javaee7thesis.register.sessionbeans.GroupsFacade;
 import vasouv.javaee7thesis.register.sessionbeans.UserFacade;
@@ -17,7 +15,7 @@ import vasouv.javaee7thesis.register.sessionbeans.UserFacade;
 @Named("registerNewUser")
 public class RegisterUserJSFBean implements Serializable {
     
-    //here will be the EJB
+    //Injects the EJBs that will persist the User's credentials upon registration
     @EJB
     UserFacade userEJB;
     @EJB
@@ -32,16 +30,12 @@ public class RegisterUserJSFBean implements Serializable {
     private String name;
     private String email;
 
-    /**
-     * Creates a new instance of RegisterUserManagedBean
-     */
-    public RegisterUserJSFBean() {
-
-    }
+    public RegisterUserJSFBean() {}
     
     /**
-     * Registers the new user and navigates to the registersuccess.xhtml
-     * @return 
+     * Registers the new user and navigates to the registersuccess webpage.
+     * 
+     * @return the webpage for successful registration
      */
     public String registerNewUser() {
         user.setId(44);
@@ -50,17 +44,16 @@ public class RegisterUserJSFBean implements Serializable {
         user.setUsername(this.username);
         user.setPassword(this.password);
         group.setUsername(this.username);
-        group.setGroupname("users");
+        group.setGroupname("user");
         
         userEJB.create(user);
+        groupEJB.create(group);
         
         return "/registersuccess.xhtml";
     }
     
     
-    /**
-     * GETTERS AND SETTERS
-     */
+    //GETTERS & SETTERS
 
     public User getUser() {
         return user;

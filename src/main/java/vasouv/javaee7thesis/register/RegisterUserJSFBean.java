@@ -3,6 +3,7 @@ package vasouv.javaee7thesis.register;
 import java.io.Serializable;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
 import vasouv.javaee7thesis.register.sessionbeans.GroupsFacade;
 import vasouv.javaee7thesis.register.sessionbeans.UserFacade;
@@ -14,47 +15,47 @@ import vasouv.javaee7thesis.register.sessionbeans.UserFacade;
 @RequestScoped
 @Named("registerNewUser")
 public class RegisterUserJSFBean implements Serializable {
-    
+
     //Injects the EJBs that will persist the User's credentials upon registration
     @EJB
     UserFacade userEJB;
     @EJB
     GroupsFacade groupEJB;
-    
-    private User user = new User();
-    private Groups group = new Groups();
-    
+
+    private User user;
+    private Groups group;
+
     //These are the four properties that the user enters in the form
     private String username;
     private String password;
     private String name;
     private String email;
 
-    public RegisterUserJSFBean() {}
-    
+    public RegisterUserJSFBean() {
+        this.user = new User();
+        this.group = new Groups();
+    }
+
     /**
      * Registers the new user and navigates to the registersuccess webpage.
-     * 
+     *
      * @return the webpage for successful registration
      */
     public String registerNewUser() {
-        user.setId(44);
         user.setName(this.name);
         user.setEmail(this.email);
         user.setUsername(this.username);
         user.setPassword(this.password);
         group.setUsername(this.username);
         group.setGroupname("user");
-        
+
         userEJB.create(user);
         groupEJB.create(group);
-        
+
         return "/registersuccess.xhtml";
     }
-    
-    
-    //GETTERS & SETTERS
 
+    //GETTERS & SETTERS
     public User getUser() {
         return user;
     }
@@ -102,5 +103,5 @@ public class RegisterUserJSFBean implements Serializable {
     public void setEmail(String email) {
         this.email = email;
     }
-    
+
 }

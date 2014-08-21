@@ -24,7 +24,7 @@ import javax.validation.constraints.Size;
 @Entity
 @Table(name = "USERS")
 //@NamedQueries({
-//    @NamedQuery(name = "Users.findAll", query = "SELECT u FROM Users u"),
+//    @NamedQuery(name = "Users.findMaxID", query = "SELECT max(id) FROM APP.Users u")})
 //    @NamedQuery(name = "Users.findById", query = "SELECT u FROM Users u WHERE u.id = :id"),
 //    @NamedQuery(name = "Users.findByUsername", query = "SELECT u FROM Users u WHERE u.username = :username"),
 //    @NamedQuery(name = "Users.findByPassword", query = "SELECT u FROM Users u WHERE u.password = :password"),

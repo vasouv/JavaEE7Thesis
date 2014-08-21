@@ -20,3 +20,6 @@ insert into users values (3,'maik','maik','Mixalis','maik@maik.com');
 insert into groups values ('vasouv','admin');
 insert into groups values ('geo','admin');
 insert into groups values ('maik','user');
+
+-- Finds the max(id) of the users, usage in registration EJB
+select max(id) from APP.USERS;

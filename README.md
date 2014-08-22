@@ -10,7 +10,7 @@ This is my JavaEE 7 thesis project. Ultimately it will be a web application, all
 ![JavaDB](http://localdoc.scusa.lsu.edu/java/6-jdk/db/docs/html/images/java_db_type.jpg)
 
 
-##Initial Login Code##
+##Initial Login Code and Project Setup##
 I created and set up the project following the tutorial on this [Youtube video](http://youtu.be/1xsU6juUZd0) and working with the code of [Jim Lombardo](https://github.com/jlombardo/jsfsecure). I edited the code to my preferences but the initial code and some of the existing code in my project, is still his.
 
 ##TO-DO##

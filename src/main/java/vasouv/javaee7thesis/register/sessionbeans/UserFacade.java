@@ -6,6 +6,8 @@
 
 package vasouv.javaee7thesis.register.sessionbeans;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -21,6 +23,9 @@ public class UserFacade extends AbstractFacade<User> {
     @PersistenceContext(unitName = "vasouvPU")
     private EntityManager em;
     
+    //The logger is used to log to the console when a user registers a new account
+    private static final Logger log = Logger.getLogger("registerLogger");
+    
     /**
      * Persists the User to the database.
      * 
@@ -34,6 +39,8 @@ public class UserFacade extends AbstractFacade<User> {
      * Also, the ID of the User is set by retrieving the currently max(id) and
      * adding 1 so it becomes one bigger. Could have done this by having the DB
      * auto-generating the IDs but forgot :P
+     * 
+     * Logs to the console the User's name that created a new account.
      * 
      * @param u The User to be persisted to the database.
      */
@@ -49,7 +56,11 @@ public class UserFacade extends AbstractFacade<User> {
         //It calls the method to find the max(id) and adds 1
         u.setId(findMaxID() + 1);
         
+        //Persists the User to the DB
         em.persist(u);
+        
+        //Logs to the console the name of the user after persisting it to the DB
+        log.log(Level.INFO,"User {0}" + " " + "has just created an account!", u.getName());
     }
     
     /**

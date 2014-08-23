@@ -15,3 +15,6 @@ I created and set up the project following the tutorial on this [Youtube video](
 
 ##TO-DO##
 I have a public [Trello](https://trello.com/b/rWthfmdU/javaee7-thesis) project in which you can see what features I'm planning to add, what I'm working on and what has been completed. Of course the To-Do card is constantly updated with features I want to add.
+
+##License##
+This is my own work. If I use someone else's code as-is either for temporary or permanent use, I will explicitly say so. Likewise if you use my code, you are required to mention me as the source.

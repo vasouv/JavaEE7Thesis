@@ -3,7 +3,6 @@ package vasouv.javaee7thesis.register;
 import java.io.Serializable;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
-import javax.inject.Inject;
 import javax.inject.Named;
 import vasouv.javaee7thesis.register.sessionbeans.GroupsFacade;
 import vasouv.javaee7thesis.register.sessionbeans.UserFacade;

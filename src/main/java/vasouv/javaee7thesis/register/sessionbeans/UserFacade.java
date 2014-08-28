@@ -1,13 +1,17 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+* Even though this Entity class was primarily created for registering new users
+* and persisting their data to the DB, it can be used for other operations as
+* well; after all it's not normal to create another same Entity class and just
+* change the functionality. I'll just be calling which methods I want from
+* the appropriate place.
+*/
 
 package vasouv.javaee7thesis.register.sessionbeans;
 
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.annotation.security.RolesAllowed;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -74,6 +78,19 @@ public class UserFacade extends AbstractFacade<User> {
      */
     private Integer findMaxID() {
         return (Integer)em.createQuery("select max(u.id) from User u").getSingleResult();
+    }
+    
+    /**
+     * Shows all Users.
+     * 
+     * The method queries the DB and retrieves all User entities. Basically it's
+     * just a "select * from users". Used in the admin page that displays all users.
+     * 
+     * @return List(User) retrieves all Users
+     */
+    @RolesAllowed("admin")
+    public List<User> findAllUsers() {
+        return em.createQuery("select u from User u").getResultList();
     }
 
     @Override

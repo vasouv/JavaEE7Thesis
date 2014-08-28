@@ -11,6 +11,7 @@ package vasouv.javaee7thesis.register.sessionbeans;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.annotation.security.RolesAllowed;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -87,6 +88,7 @@ public class UserFacade extends AbstractFacade<User> {
      * 
      * @return List(User) retrieves all Users
      */
+    @RolesAllowed("admin")
     public List<User> findAllUsers() {
         return em.createQuery("select u from User u").getResultList();
     }

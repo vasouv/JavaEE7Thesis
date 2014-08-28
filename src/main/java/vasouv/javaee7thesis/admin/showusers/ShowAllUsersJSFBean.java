@@ -26,25 +26,29 @@ public class ShowAllUsersJSFBean implements Serializable {
     @EJB
     UserFacade userEJB;
     
+    //This List will hold the User elements from the DB, to be shown in the page
     List<User> userList;
     
     public ShowAllUsersJSFBean() {
-//        this.userList = new ArrayList<>();
-//        this.userList = new ArrayList<>(userEJB.findAllUsers());
         this.userList = new ArrayList<>();
-//        userList.add(new User(66,"t1","t1","t1","t1"));
-//        userList.add(new User(67,"t2","t2","t2","t2"));
-        System.out.println(userList.size());
     }
 
+    /**
+     * Retrieves the list of Users for the admin view page.
+     * 
+     * It's a simple getter method for the userList variable. Before returning
+     * the list of Users though, it uses the EJB to find all Users from the DB
+     * and sets them to the userList variable.
+     * 
+     * @return List(User) all the DB User elements, basically (select * from User)
+     */
     public List<User> getUserList() {
+        setUserList(userEJB.findAllUsers());
         return userList;
     }
 
     public void setUserList(List<User> userList) {
         this.userList = userList;
     }
-    
-    
     
 }

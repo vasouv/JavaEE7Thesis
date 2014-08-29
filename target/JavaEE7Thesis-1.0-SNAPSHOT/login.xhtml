@@ -1,35 +1,54 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
         <title>Login Page</title>
     </h:head>
     <h:body>
-        <h3>Welcome to the Login Page</h3>
-        <p><h:link outcome="/index" value="To Home Page" /></p>
-        
-        <h1>Login as Admin</h1>
-        <ul>
-            <li>Username, password: vasouv, vasouv</li>
-            <li>Username, password: geo, geo</li>
-        </ul>
-        
-        <h1>Login as User</h1>
-        <ul>
-            <li>Username, password: maik, maik</li>
-        </ul>
-        
-        <form method="POST" action="j_security_check">
-            <h:panelGrid columns="2">
-                <h:outputLabel value="User Name"/>
-                <input type="text" name="j_username" />
-                <h:outputLabel value="Password"/>
-                <input type="password" name="j_password" />
-                <input type="submit" value="Login" />
-            </h:panelGrid>
-        </form> 
+        <ui:composition template="./resources/basicTemplate.xhtml">
 
+            <ui:define name="top">
+                <h1>Please enter your credentials</h1>
+            </ui:define>
+
+            <ui:define name="left">
+                <h:link outcome="/index" value="Home Page" />
+                <br/>
+                <br/>
+                <h:link outcome="register.xhtml" value="New Account" />
+                <br/>
+                <br/>
+            </ui:define>
+
+            <ui:define name="right">
+                <h:link outcome="admin/admin-main" value="Admin section" />
+            </ui:define>
+
+            <ui:define name="content">
+                <h2>---Admin Sample Accounts---</h2>
+                <ul>
+                    <li>Username, password: vasouv, vasouv</li>
+                    <li>Username, password: geo, geo</li>
+                </ul>
+                <h2>---User Sample Account---</h2>
+                <ul>
+                    <li>Username, password: maik, maik</li>
+                </ul>
+
+                <form method="POST" action="j_security_check">
+                    <h:panelGrid columns="2">
+                        <h:outputLabel value="User Name"/>
+                        <input type="text" name="j_username" />
+                        <h:outputLabel value="Password"/>
+                        <input type="password" name="j_password" />
+                        <input type="submit" value="Login" />
+                    </h:panelGrid>
+                </form> 
+            </ui:define>
+
+        </ui:composition>
     </h:body>
 </html>
 

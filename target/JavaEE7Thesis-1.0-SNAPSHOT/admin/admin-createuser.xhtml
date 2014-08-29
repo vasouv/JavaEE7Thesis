@@ -2,36 +2,65 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
         <title>Admin Create User</title>
     </h:head>
     <h:body>
-        <h:form id="createuserform">
-            <h:panelGrid columns="2">
-                <f:facet name="header">Enter the user's credentials</f:facet>
-                <h:outputLabel for="crname" value="Name: "/>
-                <h:inputText id="crname" value="#{createUserJSFBean.name}" required="true" requiredMessage="Name cannot be empty!"/>
-                <h:outputLabel for="crmail" value="Email: "/>
-                <h:inputText id="crmail" value="#{createUserJSFBean.email}" required="true" requiredMessage="Email cannot be empty!"/>
-                <h:outputLabel for="crusername" value="Username: "/>
-                <h:inputText id="crusername" value="#{createUserJSFBean.username}" required="true" requiredMessage="Username cannot be empty!"/>
-                <h:outputLabel for="crpassword" value="Password: "/>
-                <h:inputSecret id="crpassword" value="#{createUserJSFBean.password}" required="true" requiredMessage="Password cannot be empty!"/>
-                <h:outputLabel for="crgroup" value="Group: "/>
-                <h:selectOneRadio id="crgroup" value="#{createUserJSFBean.grp}">
-                    <f:selectItem itemValue="user" itemLabel="User"/>
-                    <f:selectItem itemValue="admin" itemLabel="Admin"/>
-                </h:selectOneRadio>
-                <f:facet name="footer">
-                    <h:commandButton id="createUserBtn" value="Create User" action="#{createUserJSFBean.createNewUser()}"/>
-                    <h:commandButton id="cancelUserBtn" value="Cancel" type="reset"/>
-                </f:facet>
-            </h:panelGrid>
-        </h:form>
-        <h:messages style="color:red" />
-        <br/>
-        <p><h:link outcome="/index" value="To Home Page" /></p>
+        <ui:composition template="../resources/basicTemplate.xhtml">
+
+            <ui:define name="top">
+                <h1>Create a new User</h1>
+            </ui:define>
+
+            <ui:define name="left">
+                <h:link outcome="/index" value="Home Page" />
+                <br/>
+                <br/>
+                <h:link outcome="admin-showusers" value="Show Users" />
+                <br/>
+                <br/>
+                <h:link outcome="admin-createuser" value="Create User"/>
+                <br/>
+                <br/>
+                <h:link outcome="admin-edituser" value="Edit User"/>
+                <br/>
+                <br/>
+                <h:link outcome="admin-deleteuser" value="Delete User"/>
+            </ui:define>
+
+            <ui:define name="right">
+                <h:link outcome="admin-main" value="Admin section" />
+            </ui:define>
+
+            <ui:define name="content">
+                <h:form id="createuserform">
+                    <h:panelGrid columns="2">
+                        <f:facet name="header">Enter the user's credentials</f:facet>
+                        <h:outputLabel for="crname" value="Name: "/>
+                        <h:inputText id="crname" value="#{createUserJSFBean.name}" required="true" requiredMessage="Name cannot be empty!"/>
+                        <h:outputLabel for="crmail" value="Email: "/>
+                        <h:inputText id="crmail" value="#{createUserJSFBean.email}" required="true" requiredMessage="Email cannot be empty!"/>
+                        <h:outputLabel for="crusername" value="Username: "/>
+                        <h:inputText id="crusername" value="#{createUserJSFBean.username}" required="true" requiredMessage="Username cannot be empty!"/>
+                        <h:outputLabel for="crpassword" value="Password: "/>
+                        <h:inputSecret id="crpassword" value="#{createUserJSFBean.password}" required="true" requiredMessage="Password cannot be empty!"/>
+                        <h:outputLabel for="crgroup" value="Group: "/>
+                        <h:selectOneRadio id="crgroup" value="#{createUserJSFBean.grp}">
+                            <f:selectItem itemValue="user" itemLabel="User"/>
+                            <f:selectItem itemValue="admin" itemLabel="Admin"/>
+                        </h:selectOneRadio>
+                        <f:facet name="footer">
+                            <h:commandButton id="createUserBtn" value="Create User" action="#{createUserJSFBean.createNewUser()}"/>
+                            <h:commandButton id="cancelUserBtn" value="Clear" type="reset"/>
+                        </f:facet>
+                    </h:panelGrid>
+                </h:form>
+                <h:messages style="color:red" />
+            </ui:define>
+
+        </ui:composition>
     </h:body>
 </html>
 

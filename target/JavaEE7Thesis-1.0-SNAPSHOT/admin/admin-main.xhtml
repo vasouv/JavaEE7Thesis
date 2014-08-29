@@ -1,17 +1,49 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
         <title>Admin Main Page</title>
     </h:head>
     <h:body>
-        <h1>View all users</h1>
-        <h:link outcome="admin-showusers" value="Show Users" />
-        <h1>Create a user</h1>
-        <h:link outcome="admin-createuser" value="Create User"/>
-        <br/>
-        <p><h:link outcome="/index" value="To Home Page" /></p>
+        <ui:composition template="../resources/basicTemplate.xhtml">
+
+            <ui:define name="top">
+                <h1>Administrator Central Page</h1>
+            </ui:define>
+
+            <ui:define name="left">
+                <h:link outcome="/index" value="Home Page" />
+                <br/>
+                <br/>
+                <h:link outcome="admin-showusers" value="Show Users" />
+                <br/>
+                <br/>
+                <h:link outcome="admin-createuser" value="Create User"/>
+                <br/>
+                <br/>
+                <h:link outcome="admin-edituser" value="Edit User"/>
+                <br/>
+                <br/>
+                <h:link outcome="admin-deleteuser" value="Delete User"/>
+            </ui:define>
+
+            <ui:define name="right">
+                <h:link outcome="admin-main" value="Admin section" />
+            </ui:define>
+
+            <ui:define name="content">
+                <h2>Basic administrator operations - CRUD</h2>
+                <ul>
+                    <li>Show all users</li>
+                    <li>Create new user</li>
+                    <li>Edit existing user</li>
+                    <li>Delete existing user</li>
+                </ul>
+            </ui:define>
+
+        </ui:composition>
     </h:body>
 </html>
 

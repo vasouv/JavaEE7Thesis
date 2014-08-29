@@ -9,6 +9,10 @@
     <h:body>
         <h1>Showing all registered users!</h1>
         <h:dataTable var="user" id="showUsers" value="#{showAllUsersJSFBean.userList}">
+            <h:column>
+                <f:facet name="header">ID</f:facet>
+                    #{user.id}
+            </h:column>
             <h:column>    				
                 <f:facet name="header">Name</f:facet>    				
                     #{user.name}
@@ -26,6 +30,9 @@
                     #{user.password}
             </h:column>
         </h:dataTable>
+        <br/>
+        <h:outputLabel id="usersNumber" value="Total Registered Users:"/>
+        #{showAllUsersJSFBean.userList.size()}
         <br/>
         <h:link outcome="admin-main" value="Admin Main Page" />
     </h:body>

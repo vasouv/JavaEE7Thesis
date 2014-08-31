@@ -10,6 +10,7 @@ package vasouv.javaee7thesis.admin.createuser;
 import java.io.Serializable;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.event.ActionEvent;
 import javax.inject.Named;
 import vasouv.javaee7thesis.register.Groups;
 import vasouv.javaee7thesis.register.User;
@@ -74,6 +75,8 @@ public class CreateUserJSFBean implements Serializable {
         sb.append(getUsername());
         sb.append("\nPassword: ");
         sb.append(getPassword());
+        sb.append("\nGroup: ");
+        sb.append(getGrp());
         return sb.toString();
     }
 

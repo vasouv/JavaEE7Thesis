@@ -2,7 +2,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
     <h:head>
         <title>Admin Main Page</title>
     </h:head>
@@ -14,23 +15,23 @@
             </ui:define>
 
             <ui:define name="left">
-                <h:link outcome="/index" value="Home Page" />
+                <p:link outcome="/index" value="Home Page" />
                 <br/>
                 <br/>
-                <h:link outcome="admin-showusers" value="Show Users" />
+                <p:link outcome="admin-showusers" value="Show Users" />
                 <br/>
                 <br/>
-                <h:link outcome="admin-createuser" value="Create User"/>
+                <p:link outcome="admin-createuser" value="Create User"/>
                 <br/>
                 <br/>
-                <h:link outcome="admin-edituser" value="Edit User"/>
+<!--                <p:link outcome="admin-edituser" value="Edit User"/>
                 <br/>
                 <br/>
-                <h:link outcome="admin-deleteuser" value="Delete User"/>
+                <p:link outcome="admin-deleteuser" value="Delete User"/>-->
             </ui:define>
 
             <ui:define name="right">
-                <h:link outcome="admin-main" value="Admin section" />
+                <p:link outcome="admin-main" value="Admin section" />
             </ui:define>
 
             <ui:define name="content">

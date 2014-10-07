@@ -37,27 +37,45 @@
 
             <ui:define name="content">
                 <h2>Showing all registered users!</h2>
-                <p:dataTable var="user" id="showUsers" value="#{showAllUsersJSFBean.userList}" tableStyle="table-layout:auto">
-                    <f:facet name="header">List of Users</f:facet>
-                    <p:column headerText="ID">
-                        <h:outputText value="#{user.id}"/>
-                    </p:column>
-                    <p:column headerText="Name">
-                        <h:outputText value="#{user.name}"/>
-                    </p:column>
-                    <p:column headerText="Email">
-                        <h:outputText value="#{user.email}"/>
-                    </p:column>
-                    <p:column headerText="Username">
-                        <h:outputText value="#{user.username}"/>
-                    </p:column>
-                    <p:column headerText="Password">
-                        <h:outputText value="#{user.password}"/>
-                    </p:column>
-                    <f:facet name="footer">
-                        In total there are #{showAllUsersJSFBean.userList.size()} users
-                    </f:facet>
-                </p:dataTable>
+                <h:form>
+                    Search for user by:
+                    <p:panelGrid columns="3">
+                        <p:selectOneRadio id="searchBy" value="#{showAllUsersJSFBean.searchBy}">
+                            <f:selectItem itemValue="username" itemLabel="Username"/>
+                            <f:selectItem itemValue="name" itemLabel="Name"/>
+                            <f:selectItem itemValue="email" itemLabel="Email"/>
+                        </p:selectOneRadio>
+                        <p:inputText id="searchTerm" value="#{showAllUsersJSFBean.searchTerm}" required="true" requiredMessage="You must enter a search term!"/>
+                        <p:commandButton id="searchUser" value="Search" action="#{showAllUsersJSFBean.searchByUsername}" update="showUsers"/>
+                    </p:panelGrid>
+
+                    <p:dataTable var="user" id="showUsers" value="#{showAllUsersJSFBean.userList}" tableStyle="table-layout:auto">
+
+                        <f:facet name="header">
+                            Show stuff
+                        </f:facet>
+
+                        <p:column headerText="ID">
+                            <h:outputText value="#{user.id}"/>
+                        </p:column>
+                        <p:column headerText="Name">
+                            <h:outputText value="#{user.name}"/>
+                        </p:column>
+                        <p:column headerText="Email">
+                            <h:outputText value="#{user.email}"/>
+                        </p:column>
+                        <p:column headerText="Username">
+                            <h:outputText value="#{user.username}"/>
+                        </p:column>
+                        <p:column headerText="Password">
+                            <h:outputText value="#{user.password}"/>
+                        </p:column>
+                        <f:facet name="footer">
+                            In total there are #{showAllUsersJSFBean.userList.size()} users
+                        </f:facet>
+                    </p:dataTable>
+                </h:form>
+
             </ui:define>
 
         </ui:composition>

@@ -105,10 +105,6 @@ public class UserFacade extends AbstractFacade<User> {
     public List<User> findByUsername(String username) {
         return em.createQuery("select u from User u where u.username like :search")
                 .setParameter("search", "%" + username + "%").getResultList();
-        
-//        List<User> tempList = new ArrayList<>(em.createQuery("select u from User u").getResultList());
-//        tempList.stream().filter((u) -> u.getUsername().contains(username)).forEach(System.out::println);
-//        return tempList;
     }
 
     @Override

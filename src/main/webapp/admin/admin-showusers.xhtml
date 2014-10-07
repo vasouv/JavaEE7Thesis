@@ -40,16 +40,26 @@
                 <h:form>
                     Search for user by:
                     <p:panelGrid columns="3">
-                        <p:selectOneRadio id="searchBy" value="#{showAllUsersJSFBean.searchBy}">
+                        <p:selectOneRadio id="searchBy" 
+                                          value="#{showAllUsersJSFBean.searchBy}" 
+                                          required="true" 
+                                          requiredMessage="You must select how to search!">
                             <f:selectItem itemValue="username" itemLabel="Username"/>
                             <f:selectItem itemValue="name" itemLabel="Name"/>
                             <f:selectItem itemValue="email" itemLabel="Email"/>
                         </p:selectOneRadio>
-                        <p:inputText id="searchTerm" value="#{showAllUsersJSFBean.searchTerm}" required="true" requiredMessage="You must enter a search term!"/>
-                        <p:commandButton id="searchUser" value="Search" action="#{showAllUsersJSFBean.searchByUsername}" update="showUsers"/>
+                        <p:inputText id="searchTerm" 
+                                     value="#{showAllUsersJSFBean.searchTerm}" 
+                                     required="true" 
+                                     requiredMessage="You must enter a search term!"/>
+                        <p:commandButton id="searchUser" value="Search" 
+                                         action="#{showAllUsersJSFBean.searchByField}" 
+                                         update="showUsers"/>
                     </p:panelGrid>
 
-                    <p:dataTable var="user" id="showUsers" value="#{showAllUsersJSFBean.userList}" tableStyle="table-layout:auto">
+                    <p:dataTable var="user" id="showUsers" 
+                                 value="#{showAllUsersJSFBean.userList}" 
+                                 tableStyle="table-layout:auto">
 
                         <f:facet name="header">
                             Show stuff
@@ -75,6 +85,7 @@
                         </f:facet>
                     </p:dataTable>
                 </h:form>
+                <p:messages style="color:red" />
 
             </ui:define>
 

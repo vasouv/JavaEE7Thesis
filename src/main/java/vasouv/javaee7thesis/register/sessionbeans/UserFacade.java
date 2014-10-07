@@ -8,7 +8,9 @@
 
 package vasouv.javaee7thesis.register.sessionbeans;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Predicate;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.annotation.security.RolesAllowed;
@@ -102,7 +104,19 @@ public class UserFacade extends AbstractFacade<User> {
     @RolesAllowed("admin")
     public List<User> findByUsername(String username) {
         return em.createQuery("select u from User u where u.username like :search")
-                .setParameter("search", username).getResultList();
+                .setParameter("search", "%" + username + "%").getResultList();
+    }
+    
+    @RolesAllowed("admin")
+    public List<User> findByName(String name) {
+        return em.createQuery("select u from User u where u.name like :search")
+                .setParameter("search", "%" + name + "%").getResultList();
+    }
+    
+    @RolesAllowed("admin")
+    public List<User> findByEmail(String email) {
+        return em.createQuery("select u from User u where u.email like :search")
+                .setParameter("search", "%" + email + "%").getResultList();
     }
 
     @Override

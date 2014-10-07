@@ -106,6 +106,18 @@ public class UserFacade extends AbstractFacade<User> {
         return em.createQuery("select u from User u where u.username like :search")
                 .setParameter("search", "%" + username + "%").getResultList();
     }
+    
+    @RolesAllowed("admin")
+    public List<User> findByName(String name) {
+        return em.createQuery("select u from User u where u.name like :search")
+                .setParameter("search", "%" + name + "%").getResultList();
+    }
+    
+    @RolesAllowed("admin")
+    public List<User> findByEmail(String email) {
+        return em.createQuery("select u from User u where u.email like :search")
+                .setParameter("search", "%" + email + "%").getResultList();
+    }
 
     @Override
     protected EntityManager getEntityManager() {

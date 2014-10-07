@@ -44,8 +44,28 @@ public class ShowAllUsersJSFBean implements Serializable {
     
     public ShowAllUsersJSFBean() {
         this.userList = new ArrayList<>();
-        this.searchBy = "";
+        this.searchBy = "username";
         this.searchTerm = "";
+    }
+    
+    /**
+     * Searches the DB by sth.
+     * 
+     * Calls the specific method when we want to search by username, name or email.
+     * If the admin doesn't check a radio button, it searches by username by default.
+     */
+    public void searchByField(){
+        switch (searchBy) {
+            case "username":
+                searchByUsername();
+                break;
+            case "name":
+                searchByName();
+                break;
+            case "email":
+                searchByEmail();
+                break;
+        }
     }
     
     /**
@@ -54,10 +74,34 @@ public class ShowAllUsersJSFBean implements Serializable {
      * It uses the EJB to search the DB for the specific users by username. It
      * then sets the List of users to the userList list.
      */
-    public void searchByUsername() {
+    private void searchByUsername() {
         setUserList(userEJB.findByUsername(searchTerm));
     }
+    
+    /**
+     * Searches the DB by name.
+     * 
+     * It uses the EJB to search the DB for the specific users by name. It
+     * then sets the List of users to the userList list.
+     */
+    private void searchByName() {
+        setUserList(userEJB.findByName(searchTerm));
+    }
+    
+    /**
+     * Searches the DB by email.
+     * 
+     * It uses the EJB to search the DB for the specific users by email. It
+     * then sets the List of users to the userList list.
+     */
+    private void searchByEmail() {
+        setUserList(userEJB.findByEmail(searchTerm));
+    }
 
+    /*
+     * GETTERS AND SETTERS
+    */
+    
     public List<User> getUserList() {
         return userList;
     }

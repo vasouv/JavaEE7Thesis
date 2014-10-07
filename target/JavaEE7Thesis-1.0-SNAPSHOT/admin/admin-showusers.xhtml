@@ -53,7 +53,7 @@
                                      required="true" 
                                      requiredMessage="You must enter a search term!"/>
                         <p:commandButton id="searchUser" value="Search" 
-                                         action="#{showAllUsersJSFBean.searchByUsername}" 
+                                         action="#{showAllUsersJSFBean.searchByField}" 
                                          update="showUsers"/>
                     </p:panelGrid>
 
@@ -85,6 +85,7 @@
                         </f:facet>
                     </p:dataTable>
                 </h:form>
+                <p:messages style="color:red" />
 
             </ui:define>
 

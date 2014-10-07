@@ -9,8 +9,9 @@ package vasouv.javaee7thesis.admin.showusers;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
-import javax.enterprise.context.RequestScoped;
+import javax.faces.bean.ViewScoped;
 import javax.inject.Named;
 import vasouv.javaee7thesis.register.User;
 import vasouv.javaee7thesis.register.sessionbeans.UserFacade;
@@ -19,7 +20,7 @@ import vasouv.javaee7thesis.register.sessionbeans.UserFacade;
  *
  * @author vasouv
  */
-@RequestScoped
+@ViewScoped
 @Named("showAllUsersJSFBean")
 public class ShowAllUsersJSFBean implements Serializable {
 
@@ -29,26 +30,56 @@ public class ShowAllUsersJSFBean implements Serializable {
     //This List will hold the User elements from the DB, to be shown in the page
     List<User> userList;
     
+    //Search variable for username, name and email
+    String searchBy;
+    
+    //Search term given by the user
+    String searchTerm;
+    
+    //When the bean is loaded, it sets all the users from the DB
+    @PostConstruct
+    public void init() {
+        setUserList(userEJB.findAllUsers());
+    }
+    
     public ShowAllUsersJSFBean() {
         this.userList = new ArrayList<>();
+        this.searchBy = "";
+        this.searchTerm = "";
+    }
+    
+    /**
+     * Searches the DB by username.
+     * 
+     * It uses the EJB to search the DB for the specific users by username. It
+     * then sets the List of users to the userList list.
+     */
+    public void searchByUsername() {
+        setUserList(userEJB.findByUsername(searchTerm));
     }
 
-    /**
-     * Retrieves the list of Users for the admin view page.
-     * 
-     * It's a simple getter method for the userList variable. Before returning
-     * the list of Users though, it uses the EJB to find all Users from the DB
-     * and sets them to the userList variable.
-     * 
-     * @return List(User) all the DB User elements, basically (select * from User)
-     */
     public List<User> getUserList() {
-        setUserList(userEJB.findAllUsers());
         return userList;
     }
 
     public void setUserList(List<User> userList) {
         this.userList = userList;
+    }
+
+    public String getSearchBy() {
+        return searchBy;
+    }
+
+    public void setSearchBy(String searchBy) {
+        this.searchBy = searchBy;
+    }
+
+    public String getSearchTerm() {
+        return searchTerm;
+    }
+
+    public void setSearchTerm(String searchTerm) {
+        this.searchTerm = searchTerm;
     }
     
 }

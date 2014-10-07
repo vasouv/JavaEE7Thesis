@@ -11,7 +11,7 @@
     <managed-bean>
         <managed-bean-name>showAllUsersJSFBean</managed-bean-name>
         <managed-bean-class>vasouv.javaee7thesis.admin.showusers.ShowAllUsersJSFBean</managed-bean-class>
-        <managed-bean-scope>request</managed-bean-scope>
+        <managed-bean-scope>view</managed-bean-scope>
     </managed-bean>
     <managed-bean>
         <managed-bean-name>createUserJSFBean</managed-bean-name>

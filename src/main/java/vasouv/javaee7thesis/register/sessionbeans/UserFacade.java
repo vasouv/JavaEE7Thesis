@@ -92,6 +92,18 @@ public class UserFacade extends AbstractFacade<User> {
     public List<User> findAllUsers() {
         return em.createQuery("select u from User u").getResultList();
     }
+    
+    /**
+     * Finds users by username.
+     * 
+     * @param username
+     * @return List(User) retrieves the matched Users with username like param
+     */
+    @RolesAllowed("admin")
+    public List<User> findByUsername(String username) {
+        return em.createQuery("select u from User u where u.username like :search")
+                .setParameter("search", username).getResultList();
+    }
 
     @Override
     protected EntityManager getEntityManager() {

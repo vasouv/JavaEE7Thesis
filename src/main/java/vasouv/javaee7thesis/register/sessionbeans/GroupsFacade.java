@@ -8,10 +8,12 @@ package vasouv.javaee7thesis.register.sessionbeans;
 
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.annotation.security.RolesAllowed;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import vasouv.javaee7thesis.register.Groups;
+import vasouv.javaee7thesis.register.User;
 
 /**
  *
@@ -44,6 +46,12 @@ public class GroupsFacade extends AbstractFacade<Groups> {
         //Logs to the console the username and group that was persisted to the DB
         glog.log(Level.INFO,"Username {0}" + " " + "was added in group: {1}", 
                 new Object[]{g.getUsername(), g.getGroupname()});
+    }
+    
+    @RolesAllowed("admin")
+    public void deleteUser(User us) {
+        int delCount = em.createQuery("delete from Groups g where g.username = :del")
+                .setParameter("del", us.getUsername()).executeUpdate();
     }
 
     @Override

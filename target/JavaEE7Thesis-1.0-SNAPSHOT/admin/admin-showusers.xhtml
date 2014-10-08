@@ -39,7 +39,7 @@
                 <h2>Showing all registered users!</h2>
                 <h:form>
                     Search for user by:
-                    <p:panelGrid columns="3">
+                    <p:panelGrid columns="4">
                         <p:selectOneRadio id="searchBy" 
                                           value="#{showAllUsersJSFBean.searchBy}" 
                                           required="true" 
@@ -55,16 +55,23 @@
                         <p:commandButton id="searchUser" value="Search" 
                                          action="#{showAllUsersJSFBean.searchByField}" 
                                          update="showUsers"/>
+                        <p:commandButton id="deleteUser" value="! DELETE !" 
+                                             action="#{showAllUsersJSFBean.deleteSelectedUser()}" 
+                                             update="showUsers"/>
                     </p:panelGrid>
+                    
 
                     <p:dataTable var="user" id="showUsers" 
                                  value="#{showAllUsersJSFBean.userList}" 
+                                 selection="#{showAllUsersJSFBean.selectedToDelete}" 
+                                 rowKey="#{user.id}"
                                  tableStyle="table-layout:auto">
 
                         <f:facet name="header">
                             Show stuff
                         </f:facet>
 
+                        <p:column selectionMode="single" style="width:16px;text-align: center"/>
                         <p:column headerText="ID">
                             <h:outputText value="#{user.id}"/>
                         </p:column>

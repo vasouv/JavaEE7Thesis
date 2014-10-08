@@ -107,16 +107,34 @@ public class UserFacade extends AbstractFacade<User> {
                 .setParameter("search", "%" + username + "%").getResultList();
     }
     
+    /**
+     * Finds users by name.
+     * 
+     * @param name
+     * @return List(User) retrieves the matched Users with name like param
+     */
     @RolesAllowed("admin")
     public List<User> findByName(String name) {
         return em.createQuery("select u from User u where u.name like :search")
                 .setParameter("search", "%" + name + "%").getResultList();
     }
     
+    /**
+     * Finds users by email.
+     * 
+     * @param email
+     * @return List(User) retrieves the matched Users with email like param
+     */
     @RolesAllowed("admin")
     public List<User> findByEmail(String email) {
         return em.createQuery("select u from User u where u.email like :search")
                 .setParameter("search", "%" + email + "%").getResultList();
+    }
+    
+    @RolesAllowed("admin")
+    public void deleteUser(User us) {
+        int delCount = em.createQuery("delete from User u where u.id = :del")
+                .setParameter("del", us.getId()).executeUpdate();
     }
 
     @Override

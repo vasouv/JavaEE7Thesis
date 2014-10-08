@@ -14,6 +14,7 @@ import javax.ejb.EJB;
 import javax.faces.bean.ViewScoped;
 import javax.inject.Named;
 import vasouv.javaee7thesis.register.User;
+import vasouv.javaee7thesis.register.sessionbeans.GroupsFacade;
 import vasouv.javaee7thesis.register.sessionbeans.UserFacade;
 
 /**
@@ -27,6 +28,9 @@ public class ShowAllUsersJSFBean implements Serializable {
     @EJB
     UserFacade userEJB;
     
+    @EJB
+    GroupsFacade groupEJB;
+    
     //This List will hold the User elements from the DB, to be shown in the page
     List<User> userList;
     
@@ -35,6 +39,9 @@ public class ShowAllUsersJSFBean implements Serializable {
     
     //Search term given by the user
     String searchTerm;
+    
+    //This User's account will be deleted
+    private User selectedToDelete;
     
     //When the bean is loaded, it sets all the users from the DB
     @PostConstruct
@@ -66,6 +73,12 @@ public class ShowAllUsersJSFBean implements Serializable {
                 searchByEmail();
                 break;
         }
+    }
+    
+    public void deleteSelectedUser() {
+        userEJB.deleteUser(selectedToDelete);
+        groupEJB.deleteUser(selectedToDelete);
+        setUserList(userEJB.findAllUsers());
     }
     
     /**
@@ -124,6 +137,14 @@ public class ShowAllUsersJSFBean implements Serializable {
 
     public void setSearchTerm(String searchTerm) {
         this.searchTerm = searchTerm;
+    }
+
+    public User getSelectedToDelete() {
+        return selectedToDelete;
+    }
+
+    public void setSelectedToDelete(User selectedToDelete) {
+        this.selectedToDelete = selectedToDelete;
     }
     
 }

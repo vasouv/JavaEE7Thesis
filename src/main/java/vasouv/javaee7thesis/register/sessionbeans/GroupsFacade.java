@@ -48,6 +48,11 @@ public class GroupsFacade extends AbstractFacade<Groups> {
                 new Object[]{g.getUsername(), g.getGroupname()});
     }
     
+    /**
+     * Deletes Group by User's username.
+     * 
+     * @param us Group to be deleted
+     */
     @RolesAllowed("admin")
     public void deleteUser(User us) {
         int delCount = em.createQuery("delete from Groups g where g.username = :del")

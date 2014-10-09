@@ -131,6 +131,11 @@ public class UserFacade extends AbstractFacade<User> {
                 .setParameter("search", "%" + email + "%").getResultList();
     }
     
+    /**
+     * Deletes User by id.
+     * 
+     * @param us User to be deleted
+     */
     @RolesAllowed("admin")
     public void deleteUser(User us) {
         int delCount = em.createQuery("delete from User u where u.id = :del")

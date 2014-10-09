@@ -16,30 +16,27 @@
             </ui:define>
 
             <ui:define name="left">
-                <p:link outcome="/index" value="Home Page" />
+                <p:button outcome="/index" value="Home Page"/>
                 <br/>
                 <br/>
-                <p:link outcome="admin-showusers" value="Show Users" />
+                <p:button outcome="admin-showusers" value="Show Users"/>
                 <br/>
                 <br/>
-                <p:link outcome="admin-createuser" value="Create User"/>
+                <p:button outcome="admin-createuser" value="Create User"/>
                 <br/>
                 <br/>
-                <!--<p:link outcome="admin-edituser" value="Edit User"/>-->
-                <br/>
-                <br/>
-                <!--<p:link outcome="admin-deleteuser" value="Delete User"/>-->
             </ui:define>
 
             <ui:define name="right">
-                <p:link outcome="admin-main" value="Admin section" />
+                <p:button outcome="admin-main" value="Admin Section"/>
             </ui:define>
 
             <ui:define name="content">
                 <h2>Showing all registered users!</h2>
                 <h:form>
+                    <p:growl id="growl" showDetail="true" life="5000" />
                     Search for user by:
-                    <p:panelGrid columns="4">
+                    <p:panelGrid columns="3">
                         <p:selectOneRadio id="searchBy" 
                                           value="#{showAllUsersJSFBean.searchBy}" 
                                           required="true" 
@@ -50,16 +47,11 @@
                         </p:selectOneRadio>
                         <p:inputText id="searchTerm" 
                                      value="#{showAllUsersJSFBean.searchTerm}" 
-                                     required="true" 
-                                     requiredMessage="You must enter a search term!"/>
+                                     title="Enter search term or it defaults to select * from Users"/>
                         <p:commandButton id="searchUser" value="Search" 
                                          action="#{showAllUsersJSFBean.searchByField}" 
                                          update="showUsers"/>
-                        <p:commandButton id="deleteUser" value="! DELETE !" 
-                                             action="#{showAllUsersJSFBean.deleteSelectedUser()}" 
-                                             update="showUsers"/>
                     </p:panelGrid>
-                    
 
                     <p:dataTable var="user" id="showUsers" 
                                  value="#{showAllUsersJSFBean.userList}" 
@@ -68,7 +60,7 @@
                                  tableStyle="table-layout:auto">
 
                         <f:facet name="header">
-                            Show stuff
+                            Showing Users
                         </f:facet>
 
                         <p:column selectionMode="single" style="width:16px;text-align: center"/>
@@ -87,12 +79,22 @@
                         <p:column headerText="Password">
                             <h:outputText value="#{user.password}"/>
                         </p:column>
+
                         <f:facet name="footer">
-                            In total there are #{showAllUsersJSFBean.userList.size()} users
+                            You see #{showAllUsersJSFBean.userList.size()} of 
+                            #{showAllUsersJSFBean.numberOfUsers} total users
+                            <br/>
+                            <br/>
+                            <p:button id="editUser" value="Edit"/>
+                            <p:commandButton id="deleteUser" value="! DELETE !" 
+                                             action="#{showAllUsersJSFBean.deleteSelectedUser}" 
+                                             update="growl" ajax="false"/>
+
+
                         </f:facet>
+
                     </p:dataTable>
                 </h:form>
-                <p:messages style="color:red" />
 
             </ui:define>
 

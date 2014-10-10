@@ -10,7 +10,8 @@ package vasouv.javaee7thesis.admin.createuser;
 import java.io.Serializable;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
-import javax.faces.event.ActionEvent;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.inject.Named;
 import vasouv.javaee7thesis.register.Groups;
 import vasouv.javaee7thesis.register.User;
@@ -46,15 +47,54 @@ public class CreateUserJSFBean implements Serializable {
         this.group = new Groups();
     }
     
-    public String createNewUser() {
+    /**
+     * Creates a new user.
+     * 
+     * Calls the inputCredentials() to set the entities with the proper values,
+     * persists the entities to the DB by calling their corresponding create()
+     * methods, updates the Growl and clears the input fields.
+     */
+    public void createNewUser() {
         inputCredentials();
         
         userEJB.create(user);
         groupEJB.create(group);
         
-        return "admin-createuser-complete";
+        showCreatedUser();
+        
+        clearInputCredentials();
+    }
+    
+    /**
+     * Adds a FacesMessage for the Created User Growl.
+     * 
+     * It retrieves the FacesContext the action happened and adds a message
+     * to the Growl element.
+     */
+    private void showCreatedUser() {
+        FacesContext context = FacesContext.getCurrentInstance();
+         
+        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "User Created", user.getUsername()));
+    }
+    
+    /**
+     * Clears the input textfields.
+     * 
+     * Clears the textfields the admin enters credentials for a user.
+     */
+    private void clearInputCredentials() {
+        setName("");
+        setEmail("");
+        setUsername("");
+        setPassword("");
+        setGrp("");
     }
 
+    /**
+     * Sets the input credentials to the User and Group to be persisted.
+     * 
+     * Updates the entities' properties that will be persisted to the DB.
+     */
     private void inputCredentials() {
         user.setName(name);
         user.setEmail(email);

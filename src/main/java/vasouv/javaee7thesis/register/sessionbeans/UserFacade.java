@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.function.Predicate;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 import javax.annotation.security.RolesAllowed;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
@@ -96,15 +97,29 @@ public class UserFacade extends AbstractFacade<User> {
     }
     
     /**
-     * Finds users by username.
+     * Finds users by username - Java8 streams.
+     * 
+     * This method uses the Java 8 Lambda expressions and Collection improvements
+     * to act as an SQL query.
+     * 
+     * First, the List allUsers is created and populated with all of the database
+     * records. Then, a Collection stream is applied to the list and filters the
+     * elements if the username property contains the username argument. Lastly,
+     * it's returned as a List and added to the usernameUsers one.
      * 
      * @param username
      * @return List(User) retrieves the matched Users with username like param
      */
     @RolesAllowed("admin")
     public List<User> findByUsername(String username) {
-        return em.createQuery("select u from User u where u.username like :search")
-                .setParameter("search", "%" + username + "%").getResultList();
+        
+        List<User> allUsers = findAllUsers();
+        
+        List<User> usernameUsers = allUsers.stream()
+                .filter((u) -> u.getUsername().contains(username))
+                .collect(Collectors.toList());
+        
+        return usernameUsers;
     }
     
     /**
@@ -140,6 +155,8 @@ public class UserFacade extends AbstractFacade<User> {
     public void deleteUser(User us) {
         int delCount = em.createQuery("delete from User u where u.id = :del")
                 .setParameter("del", us.getId()).executeUpdate();
+        
+        log.log(Level.INFO,"User {0}" + " " + "was successfully removed!", us.getName());
     }
 
     @Override

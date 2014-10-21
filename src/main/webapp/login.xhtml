@@ -38,15 +38,22 @@
                     <li>Username, password: maik, maik</li>
                 </ul>
 
-                <form method="POST" action="j_security_check">
+                <!--<form method="POST" action="j_security_check">-->
+                <h:form id="login">
                     <h:panelGrid columns="2">
-                        <h:outputLabel value="User Name"/>
-                        <input type="text" name="j_username" />
+<!--                        <h:outputLabel value="User Name"/>
+                        <input type="text" name="j_username" value="#{authenticationJSFBean.username}" />
                         <h:outputLabel value="Password"/>
-                        <input type="password" name="j_password" />
-                        <input type="submit" value="Login" />
+                        <input type="password" name="j_password" value="#{authenticationJSFBean.password}"/>
+                        <input type="submit" value="Login" />-->
+                        <h:outputLabel value="Username"/>
+                        <h:inputText id="j_username" value="#{authenticationJSFBean.username}"/>
+                        <h:outputLabel value="Password"/>
+                        <h:inputSecret id="j_password" value="#{authenticationJSFBean.password}"/>
+                        <h:commandButton id="login" action="#{authenticationJSFBean.login()}" value="Login"/>
                     </h:panelGrid>
-                </form> 
+                <!--</form>--> 
+                </h:form>
             </ui:define>
 
         </ui:composition>

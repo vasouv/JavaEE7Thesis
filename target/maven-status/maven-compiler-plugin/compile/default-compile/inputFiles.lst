@@ -1,5 +1,6 @@
 C:\Users\vasouv\Documents\NetBeansProjects\JavaEE7Thesis\src\main\java\vasouv\javaee7thesis\register\Groups.java
 C:\Users\vasouv\Documents\NetBeansProjects\JavaEE7Thesis\src\main\java\vasouv\javaee7thesis\register\sessionbeans\GroupsFacade.java
+C:\Users\vasouv\Documents\NetBeansProjects\JavaEE7Thesis\src\main\java\vasouv\javaee7thesis\login\AuthenticationEJB.java
 C:\Users\vasouv\Documents\NetBeansProjects\JavaEE7Thesis\src\main\java\vasouv\javaee7thesis\register\RegisterUserJSFBean.java
 C:\Users\vasouv\Documents\NetBeansProjects\JavaEE7Thesis\src\main\java\vasouv\javaee7thesis\register\User.java
 C:\Users\vasouv\Documents\NetBeansProjects\JavaEE7Thesis\src\main\java\vasouv\javaee7thesis\admin\createuser\CreateUserJSFBean.java
@@ -7,4 +8,5 @@ C:\Users\vasouv\Documents\NetBeansProjects\JavaEE7Thesis\src\main\java\vasouv\ja
 C:\Users\vasouv\Documents\NetBeansProjects\JavaEE7Thesis\src\main\java\vasouv\javaee7thesis\admin\showusers\ShowAllUsersJSFBean.java
 C:\Users\vasouv\Documents\NetBeansProjects\JavaEE7Thesis\src\main\java\vasouv\javaee7thesis\passwordhashing\PasswordHasher.java
 C:\Users\vasouv\Documents\NetBeansProjects\JavaEE7Thesis\src\main\java\vasouv\javaee7thesis\register\sessionbeans\UserFacade.java
+C:\Users\vasouv\Documents\NetBeansProjects\JavaEE7Thesis\src\main\java\vasouv\javaee7thesis\login\AuthenticationController.java
 C:\Users\vasouv\Documents\NetBeansProjects\JavaEE7Thesis\src\main\java\vasouv\javaee7thesis\register\sessionbeans\AbstractFacade.java

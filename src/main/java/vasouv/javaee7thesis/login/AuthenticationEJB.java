@@ -44,8 +44,6 @@ public class AuthenticationEJB implements Serializable {
 
         HttpSession session = getSession();
         HttpServletRequest request = null;
-        Query userQry = null;
-        System.out.println("In the login method..." + getUser().getUsername());
         try {
             FacesContext context = FacesContext.getCurrentInstance();
             request = (HttpServletRequest) context.getExternalContext().getRequest();
@@ -59,6 +57,7 @@ public class AuthenticationEJB implements Serializable {
             FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Successfully Authenticated", ""));
 
             return authenticated;
+            
         } catch (NoResultException | ServletException ex) {
             setUser(null);
             setAuthenticated(false);

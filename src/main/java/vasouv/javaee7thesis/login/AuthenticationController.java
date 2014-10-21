@@ -23,20 +23,33 @@ import vasouv.javaee7thesis.register.User;
 @SessionScoped
 public class AuthenticationController implements Serializable {
 
+    //The EJB that will try to authenticate with given credentials
     @EJB
     private AuthenticationEJB authenticationFacade;
+    
+    //Given username
     private String username;
+    
+    //Will be passed to the auth EJB so that the password isn't saved to the session
     private User user;
+    
+    //True if user is authenticated, false if not
     private boolean authenticated = false;
+    
+    //Initializes the HTTP session
     private HttpSession session = null;
-    private String userAgent;
 
-    /**
-     * Creates a new instance of AuthenticationController
-     */
     public AuthenticationController() {
     }
 
+    /**
+     * Retrieves the HTTP Session.
+     * 
+     * This is used to get the HTTP Session that started the request and identify
+     * the user. It allows to store information for the user.
+     * 
+     * @return session
+     */
     public HttpSession getSession() {
         // if(session == null){
         FacesContext context = FacesContext.getCurrentInstance();

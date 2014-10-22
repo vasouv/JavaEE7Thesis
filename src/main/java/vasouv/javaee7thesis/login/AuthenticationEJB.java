@@ -22,8 +22,8 @@ import vasouv.javaee7thesis.passwordhashing.PasswordHasher;
 import vasouv.javaee7thesis.register.User;
 
 /**
- *
- * @author vasouv
+ * 
+ * @author Josh Juneau - JavaEE 7 Recipes - 14.3 - Apress
  */
 @Stateless
 public class AuthenticationEJB implements Serializable {
@@ -47,6 +47,8 @@ public class AuthenticationEJB implements Serializable {
         try {
             FacesContext context = FacesContext.getCurrentInstance();
             request = (HttpServletRequest) context.getExternalContext().getRequest();
+            
+            //Performs the FORM authentication
             request.login(getUser().getUsername(), this.password);
 
             session.setMaxInactiveInterval(1800);
@@ -84,34 +86,14 @@ public class AuthenticationEJB implements Serializable {
         session = request.getSession(false);
         return session;
     }
-
-    /**
-     * @return the isAuthenticated
-     */
-    public boolean isAuthenticated() {
-
-        if (getSession().getAttribute("authenticated") != null) {
-            boolean auth = (Boolean) getSession().getAttribute("authenticated");
-            if (auth) {
-                authenticated = true;
-            }
-        } else {
-            authenticated = false;
-        }
-        return authenticated;
-    }
+    
+    // GETTERS & SETTERS
 
     /**
      * @param isAuthenticated the isAuthenticated to set
      */
     public void setAuthenticated(boolean isAuthenticated) {
         this.authenticated = isAuthenticated;
-    }
-
-    @Remove
-    public void remove() {
-        System.out.println("Being removed from session...");
-        setUser(null);
     }
 
     /**

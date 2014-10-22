@@ -16,8 +16,8 @@ import javax.servlet.http.HttpSession;
 import vasouv.javaee7thesis.register.User;
 
 /**
- *
- * @author vasouv
+ * 
+ * @author Josh Juneau - JavaEE 7 Recipes - Ch14.3 - Apress
  */
 @Named(value = "authenticationJSFBean")
 @SessionScoped
@@ -30,7 +30,7 @@ public class AuthenticationController implements Serializable {
     //Given username
     private String username;
     
-    //Will be passed to the auth EJB so that the password isn't saved to the session
+    //Will contain the user's username
     private User user;
     
     //True if user is authenticated, false if not
@@ -51,7 +51,6 @@ public class AuthenticationController implements Serializable {
      * @return session
      */
     public HttpSession getSession() {
-        // if(session == null){
         FacesContext context = FacesContext.getCurrentInstance();
         HttpServletRequest request = (HttpServletRequest) context.getExternalContext().getRequest();
         session = request.getSession();
@@ -59,10 +58,27 @@ public class AuthenticationController implements Serializable {
         return session;
     }
     
+    /**
+     * Logs in the user.
+     * 
+     * Sets the values of the form to the User. The User is passed to the EJB
+     * in order to log in. The authResult holds the boolean whether the User
+     * has authenticated or not. If they have, the User's credentials are re-set
+     * to the JSF User object for the session and navigate to the users' main page.
+     * If not, the User gets nulled and navigate to the loginerror page due to
+     * invalid credentials.
+     * 
+     * @return Webpage for correct or false authentication
+     */
     public String login() {
+        
+        //Passes the JSF User to the EJB
         authenticationFacade.setUser(getUser());
+        
+        //Holds the boolean of whether has correctly authenticated or not
         boolean authResult = authenticationFacade.login();
 
+        //Navigate to the main page or login error page
         if (authResult) {
             this.authenticated = true;
 
@@ -77,6 +93,14 @@ public class AuthenticationController implements Serializable {
 
     }
 
+    /**
+     * Logs out the user.
+     * 
+     * Nulls the JSF User object, gets the current session and invalidates it,
+     * finally navigates to the logout webpage.
+     * 
+     * @return Logout webpage
+     */
     public String logout() {
         user = null;
         this.authenticated = false;
@@ -87,6 +111,10 @@ public class AuthenticationController implements Serializable {
     }
 
     /**
+     * Currently not used.
+     * 
+     * Will keep for probable future usage.
+     * 
      * @return the authenticated
      */
     public boolean isAuthenticated() {
@@ -94,7 +122,6 @@ public class AuthenticationController implements Serializable {
             boolean auth = (Boolean) getSession().getAttribute("authenticated");
             if (auth) {
                 this.authenticated = true;
-
             } else {
                 authenticated = false;
             }
@@ -104,6 +131,8 @@ public class AuthenticationController implements Serializable {
 
         return authenticated;
     }
+    
+    //GETTERS & SETTERS
 
     /**
      * @return the username
@@ -147,8 +176,6 @@ public class AuthenticationController implements Serializable {
     public void setUser(User user) {
         this.user = user;
     }
-
-    
 
     public void setAuthenticated(boolean authenticated) {
         this.authenticated = authenticated;

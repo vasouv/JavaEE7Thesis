@@ -24,10 +24,9 @@
                 <p:link outcome="admin-createuser" value="Create User"/>
                 <br/>
                 <br/>
-                <!--<p:link outcome="admin-edituser" value="Edit User"/>-->
-                <br/>
-                <br/>
-                <!--<p:link outcome="admin-deleteuser" value="Delete User"/>-->
+                <h:form>
+                    <p:commandButton action="#{authenticationJSFBean.logout()}" value="Logout" />
+                </h:form>
             </ui:define>
 
             <ui:define name="right">

@@ -6,19 +6,15 @@
 package vasouv.javaee7thesis.login;
 
 import java.io.Serializable;
-import javax.ejb.Remove;
 import javax.ejb.Stateless;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
-import javax.persistence.CacheRetrieveMode;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import vasouv.javaee7thesis.passwordhashing.PasswordHasher;
 import vasouv.javaee7thesis.register.User;
 
 /**

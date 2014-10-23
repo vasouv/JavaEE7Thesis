@@ -110,28 +110,6 @@ public class AuthenticationController implements Serializable {
         return "logout";
     }
 
-    /**
-     * Currently not used.
-     * 
-     * Will keep for probable future usage.
-     * 
-     * @return the authenticated
-     */
-    public boolean isAuthenticated() {
-        try {
-            boolean auth = (Boolean) getSession().getAttribute("authenticated");
-            if (auth) {
-                this.authenticated = true;
-            } else {
-                authenticated = false;
-            }
-        } catch (Exception e) {
-            this.authenticated = false;
-        }
-
-        return authenticated;
-    }
-    
     //GETTERS & SETTERS
 
     /**

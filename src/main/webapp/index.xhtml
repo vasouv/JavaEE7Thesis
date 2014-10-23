@@ -22,12 +22,11 @@
                 <p:button outcome="register.xhtml" value="New Account" />
                 <br/>
                 <br/>
-                <!--<p:button outcome="users/main" value="Login" />-->
                 <p:button outcome="login" value="Login" />
                 <br/>
                 <br/>
                 <h:form>
-                    <h:commandLink action="#{authenticationJSFBean.logout()}" value="Logout" />
+                    <p:commandButton action="#{authenticationJSFBean.logout()}" value="Logout" />
                 </h:form>
             </ui:define>
 

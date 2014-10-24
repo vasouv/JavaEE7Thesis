@@ -1,16 +1,58 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
     <h:head>
-        <title>Facelet Title</title>
+        <title>Available courses</title>
     </h:head>
     <h:body>
-        Users main page
-        <br/>
-        Welcome #{authenticationJSFBean.user.username}
-        <br/>
-        <p><h:link outcome="/index" value="To Home Page" /></p>
+
+        <ui:composition template="./../resources/basicTemplate.xhtml">
+
+            <ui:define name="top">
+                <h1>Welcome #{authenticationJSFBean.user.username}</h1>
+            </ui:define>
+
+            <ui:define name="left">
+                <p:button outcome="/index" value="Home Page" />
+                <br/>
+                <br/>
+                <p:button outcome="viewcourses" value="View Courses"/>
+                <br/>
+                <br/>
+                <h:form>
+                    <p:commandButton action="#{authenticationJSFBean.logout()}" value="Logout" />
+                </h:form>
+            </ui:define>
+
+            <ui:define name="right">
+                <p:button outcome="profile" value="Your Profile"/>
+            </ui:define>
+
+            <ui:define name="content">
+                <h2>View our courses</h2>
+                <p>
+                    You may want to view our available courses, just navigate to the View Courses
+                    webpage and take a look. Some of them are offered FREE of charge and some
+                    at a small cost.
+                </p>
+                <p>After you've found what you've been looking for, simply click the Enroll or Buy
+                    button. The course will be instantly available to you after purchase or enrollment. 
+                    Downloadable material is offered in most of our courses and quizzes are there for 
+                    you to check what you've learned.
+                </p>
+                <p>
+                    The courses you select for purchase are put in the Shopping Cart, once you're done
+                    browsing you can purchase them by going to your cart. Your credit card number is
+                    required.
+                </p>
+            </ui:define>
+
+        </ui:composition>
+
     </h:body>
 </html>
-

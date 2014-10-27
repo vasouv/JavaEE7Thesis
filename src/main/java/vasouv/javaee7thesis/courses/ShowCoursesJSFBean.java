@@ -84,7 +84,6 @@ public class ShowCoursesJSFBean implements Serializable {
     public void setCourses(List<Courses> courses) {
         this.courses = courses;
     }
-    
-    
+
     
 }

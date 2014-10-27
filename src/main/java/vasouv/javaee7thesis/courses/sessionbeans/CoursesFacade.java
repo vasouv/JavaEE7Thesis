@@ -30,9 +30,12 @@ public class CoursesFacade extends AbstractFacade<Courses> {
         super(Courses.class);
     }
     
+    @Override
+    public List<Courses> findAll() {
+        return em.createQuery("select c from Courses c INNER JOIN c.lecturesList l where l.id=c.id").getResultList();
+    }
+    
     public Courses findSingle() {
-//        return em.createQuery("select u from User u where u.name like :search")
-//                .setParameter("search", "%" + name + "%").getResultList();
         System.out.println("in the findSingle method");
         return (Courses) em.createNamedQuery("Courses.findByTitle").setParameter("title", "Learning Java EE 7").getSingleResult();
     }

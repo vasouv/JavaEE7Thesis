@@ -28,3 +28,7 @@ a:link:hover, a:visited:hover  {
   font-weight : bold;
   text-decoration : underline;
 }
+.no-border-pane-grid tr,
+.no-border-pane-grid td { 
+   border: none !important;
+}

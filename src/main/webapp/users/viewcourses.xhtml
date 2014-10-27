@@ -32,42 +32,30 @@
             <ui:define name="content">
                 <p:panel>
                     <p:fieldset legend="#{showCoursesJSFBean.title}" style="margin-bottom:20px">
-                        <p:column>
+                        <p:panelGrid styleClass="no-border-pane-grid">
                             <p:row>
-                                <p:graphicImage name="#{showCoursesJSFBean.image}" height="150" width="150"/>
-                            </p:row>
-                            <p:row>
-                                <h:outputText value="#{showCoursesJSFBean.description}"/>
-                            </p:row>
-                            <p:row>
-                                <h:outputText value="#{showCoursesJSFBean.price}"/>
-                            </p:row>
-                        </p:column>
-                        <p:row>
-                            <p:column>
-                                <p:dataList var="lecture" value="#{showCoursesJSFBean.courses}">
-                                    #{lecture.title}
-                                </p:dataList>
-                            </p:column>
-                            <p:column>
-                                <p:button value="Buy"/>
-                            </p:column>
-                        </p:row>
-<!--                        <h:panelGrid columns="2" cellpadding="5">
-                            <h:panelGrid columns="2" cellpadding="5">
-                                <h:panelGrid columns="2">
+                                <p:column>
                                     <p:graphicImage name="#{showCoursesJSFBean.image}" height="150" width="150"/>
+                                </p:column>
+                                <p:column>
                                     <h:outputText value="#{showCoursesJSFBean.description}"/>
-                                </h:panelGrid>
-                                <p:dataList var="lecture" value="#{showCoursesJSFBean.courses}">
-                                    #{lecture.title}
-                                </p:dataList>
-                            </h:panelGrid>
-                            <h:panelGrid columns="2" cellpadding="5">
-                                <h:outputText value="#{showCoursesJSFBean.price}"/>
-                                <p:button value="Buy"/>
-                            </h:panelGrid>
-                        </h:panelGrid>-->
+                                </p:column>
+                                <p:column rowspan="2">
+                                    <h:panelGrid columns="2">
+                                        <h:outputText value="#{showCoursesJSFBean.price}"/>
+                                        <br/>
+                                        <p:button value="Buy"/>
+                                    </h:panelGrid>
+                                </p:column>
+                            </p:row>
+                            <p:row>
+                                <p:column colspan="2">
+                                    <p:dataList var="lecture" value="#{showCoursesJSFBean.courses}">
+                                        #{lecture.title}
+                                    </p:dataList>
+                                </p:column>
+                            </p:row>
+                        </p:panelGrid>
                     </p:fieldset>
                 </p:panel>
             </ui:define>

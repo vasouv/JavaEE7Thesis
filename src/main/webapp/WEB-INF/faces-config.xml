@@ -23,4 +23,9 @@
         <managed-bean-class>vasouv.javaee7thesis.login.AuthenticationController</managed-bean-class>
         <managed-bean-scope>session</managed-bean-scope>
     </managed-bean>
+    <managed-bean>
+        <managed-bean-name>showCoursesJSFBean</managed-bean-name>
+        <managed-bean-class>vasouv.javaee7thesis.courses.ShowCoursesJSFBean</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
 </faces-config>

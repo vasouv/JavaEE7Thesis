@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <body>
+
+        <ui:composition template="./../resources/basicTemplate.xhtml">
+
+            <ui:define name="top">
+                <h1>Take a look at our available courses!</h1>
+            </ui:define>
+
+            <ui:define name="left">
+                <p:button outcome="/index" value="Home Page" />
+                <br/>
+                <br/>
+                <p:button outcome="main" value="Users Main Area"/>
+                <br/>
+                <br/>
+                <h:form>
+                    <p:commandButton action="#{authenticationJSFBean.logout()}" value="Logout" />
+                </h:form>
+            </ui:define>
+
+            <ui:define name="right">
+                <p:button outcome="profile" value="Your Profile"/>
+            </ui:define>
+
+            <ui:define name="content">
+                <p:panel>
+                    <p:fieldset legend="#{showCoursesJSFBean.title}" style="margin-bottom:20px">
+                        <p:panelGrid styleClass="no-border-pane-grid">
+                            <p:row>
+                                <p:column>
+                                    <p:graphicImage name="#{showCoursesJSFBean.image}" height="150" width="150"/>
+                                </p:column>
+                                <p:column>
+                                    <h:outputText value="#{showCoursesJSFBean.description}"/>
+                                </p:column>
+                                <p:column rowspan="2">
+                                    <h:panelGrid columns="2">
+                                        <h:outputText value="#{showCoursesJSFBean.price}"/>
+                                        <br/>
+                                        <p:button value="Buy"/>
+                                    </h:panelGrid>
+                                </p:column>
+                            </p:row>
+                            <p:row>
+                                <p:column colspan="2">
+                                    <p:dataList var="lecture" value="#{showCoursesJSFBean.lecturesTitles}">
+                                        #{lecture}
+                                    </p:dataList>
+                                </p:column>
+                            </p:row>
+                        </p:panelGrid>
+                    </p:fieldset>
+                </p:panel>
+            </ui:define>
+
+        </ui:composition>
+
+    </body>
+</html>

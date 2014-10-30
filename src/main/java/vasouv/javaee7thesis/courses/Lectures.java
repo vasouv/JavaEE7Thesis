@@ -11,7 +11,9 @@ import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -50,8 +52,11 @@ public class Lectures implements Serializable {
     @Size(max = 200)
     @Column(name = "MATERIAL")
     private String material;
-    @ManyToMany(mappedBy = "lecturesList")
-    private List<Courses> coursesList;
+//    @ManyToMany(mappedBy = "lecturesList")
+//    private List<Courses> coursesList;
+    @ManyToOne
+    @JoinTable(name="COURSELECTURES")
+    private Courses course;
 
     public Lectures() {
     }
@@ -98,14 +103,24 @@ public class Lectures implements Serializable {
         this.material = material;
     }
 
-    public List<Courses> getCoursesList() {
-        return coursesList;
+//    public List<Courses> getCoursesList() {
+//        return coursesList;
+//    }
+//
+//    public void setCoursesList(List<Courses> coursesList) {
+//        this.coursesList = coursesList;
+//    }
+
+    public Courses getCourse() {
+        return course;
     }
 
-    public void setCoursesList(List<Courses> coursesList) {
-        this.coursesList = coursesList;
+    public void setCourse(Courses course) {
+        this.course = course;
     }
 
+    
+    
     @Override
     public int hashCode() {
         int hash = 0;

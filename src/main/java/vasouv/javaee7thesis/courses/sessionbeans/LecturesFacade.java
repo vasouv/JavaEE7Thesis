@@ -5,6 +5,7 @@
  */
 package vasouv.javaee7thesis.courses.sessionbeans;
 
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -26,6 +27,10 @@ public class LecturesFacade extends AbstractFacade<Lectures> {
 
     public LecturesFacade() {
         super(Lectures.class);
+    }
+    
+    public List<String> findByCourseName(){
+        return em.createNativeQuery("select l.title from COURSES c, LECTURES l, COURSELECTURES cl where c.id=cl.course_id and cl.lecture_id=l.id and c.title='Developing Applications with NetBeans 8'").getResultList();
     }
     
 }

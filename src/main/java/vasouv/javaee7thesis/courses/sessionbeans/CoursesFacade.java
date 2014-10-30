@@ -10,6 +10,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import vasouv.javaee7thesis.courses.Courses;
+import vasouv.javaee7thesis.courses.Lectures;
 import vasouv.javaee7thesis.register.User;
 
 /**
@@ -30,14 +31,18 @@ public class CoursesFacade extends AbstractFacade<Courses> {
         super(Courses.class);
     }
     
-    @Override
-    public List<Courses> findAll() {
-        return em.createQuery("select c from Courses c INNER JOIN c.lecturesList l where l.id=c.id").getResultList();
-    }
+//    @Override
+//    public List<Courses> findAll() {
+//        return em.createQuery("select c from Courses c INNER JOIN c.lecturesList l where l.id=c.id").getResultList();
+//    }
     
     public Courses findSingle() {
         System.out.println("in the findSingle method");
         return (Courses) em.createNamedQuery("Courses.findByTitle").setParameter("title", "Learning Java EE 7").getSingleResult();
     }
+    
+//    public List<Lectures> findByCourseName(){
+//        return em.createQuery("select lec from Lectures lec where lec.course.title = :cname").setParameter("cname", "Learning Java EE 7").getResultList();
+//    }
     
 }

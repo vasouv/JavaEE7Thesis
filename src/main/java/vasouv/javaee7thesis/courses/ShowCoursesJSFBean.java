@@ -12,6 +12,7 @@ import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import vasouv.javaee7thesis.courses.sessionbeans.CoursesFacade;
+import vasouv.javaee7thesis.courses.sessionbeans.LecturesFacade;
 
 /**
  *
@@ -23,7 +24,12 @@ public class ShowCoursesJSFBean implements Serializable {
     @EJB
     CoursesFacade coursesFacade;
     
+    @EJB
+    LecturesFacade lecturesFacade;
+    
     List<Courses> courses;
+    List<Lectures> lectures;
+    List<String> lecturesTitles;
     
     String title,description,image;
     String price;
@@ -35,6 +41,7 @@ public class ShowCoursesJSFBean implements Serializable {
         setDescription(courses.get(0).getDescription());
         setImage(courses.get(0).getImage());
         setPrice("55");
+        lecturesTitles.addAll(lecturesFacade.findByCourseName());
     }
     
     public ShowCoursesJSFBean() {
@@ -43,6 +50,8 @@ public class ShowCoursesJSFBean implements Serializable {
         this.description = "";
         this.image = "";
         this.price = "";
+        this.lectures = new ArrayList<>();
+        this.lecturesTitles = new ArrayList<>();
     }
 
     public String getTitle() {
@@ -85,5 +94,22 @@ public class ShowCoursesJSFBean implements Serializable {
         this.courses = courses;
     }
 
+    public List<Lectures> getLectures() {
+        return lectures;
+    }
+
+    public void setLectures(List<Lectures> lectures) {
+        this.lectures = lectures;
+    }
+
+    public List<String> getLecturesTitles() {
+        return lecturesTitles;
+    }
+
+    public void setLecturesTitles(List<String> lecturesTitles) {
+        this.lecturesTitles = lecturesTitles;
+    }
     
+    
+
 }

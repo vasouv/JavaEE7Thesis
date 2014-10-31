@@ -43,6 +43,7 @@ public class ShowCoursesJSFBean implements Serializable {
         setPrice("55");
         lectures.addAll(lecturesFacade.findLecturesByCourseName("hey"));
         lecturesTitles.add(lectures.get(0).getTitle());
+        lecturesTitles.add(lectures.get(1).getTitle());
 //        lecturesTitles.addAll(lecturesFacade.findByCourseName());
 //        lectures.addAll(lecturesFacade.findFuckingLectures("Developing Applications with NetBeans 8"));
 //        setLectures(lecturesFacade.findFuckingLectures("Developing Applications with NetBeans 8"));

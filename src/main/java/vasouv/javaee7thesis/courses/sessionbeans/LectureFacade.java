@@ -30,7 +30,7 @@ public class LectureFacade extends AbstractFacade<Lecture> {
     }
     
     public List<Lecture> findLecturesByCourseName(String courseName) {
-        return em.createQuery("select l from Lecture l where l.courseid = 2").getResultList();
+        return em.createQuery("select l from Lecture l where l.courseid.idcourse = 2").getResultList();
     }
     
 }

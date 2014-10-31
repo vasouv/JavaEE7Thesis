@@ -11,8 +11,8 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.inject.Named;
-import vasouv.javaee7thesis.courses.sessionbeans.CoursesFacade;
-import vasouv.javaee7thesis.courses.sessionbeans.LecturesFacade;
+import vasouv.javaee7thesis.courses.sessionbeans.CourseFacade;
+import vasouv.javaee7thesis.courses.sessionbeans.LectureFacade;
 
 /**
  *
@@ -22,13 +22,13 @@ import vasouv.javaee7thesis.courses.sessionbeans.LecturesFacade;
 public class ShowCoursesJSFBean implements Serializable {
 
     @EJB
-    CoursesFacade coursesFacade;
+    CourseFacade coursesFacade;
     
     @EJB
-    LecturesFacade lecturesFacade;
+    LectureFacade lecturesFacade;
     
-    List<Courses> courses;
-    List<Lectures> lectures;
+    List<Course> courses;
+    List<Lecture> lectures;
     List<String> lecturesTitles;
     
     String title,description,image;
@@ -36,12 +36,20 @@ public class ShowCoursesJSFBean implements Serializable {
     
     @PostConstruct
     public void init() {
-        courses.add(coursesFacade.findSingle());
+        courses.addAll(coursesFacade.findAll());
         setTitle(courses.get(0).getTitle());
         setDescription(courses.get(0).getDescription());
         setImage(courses.get(0).getImage());
         setPrice("55");
-        lecturesTitles.addAll(lecturesFacade.findByCourseName());
+        lectures.addAll(lecturesFacade.findLecturesByCourseName("hey"));
+        lecturesTitles.add(lectures.get(0).getTitle());
+//        lecturesTitles.addAll(lecturesFacade.findByCourseName());
+//        lectures.addAll(lecturesFacade.findFuckingLectures("Developing Applications with NetBeans 8"));
+//        setLectures(lecturesFacade.findFuckingLectures("Developing Applications with NetBeans 8"));
+//        lecturesTitles.addAll(lecturesFacade.findByCourseName());
+//        System.out.println(lectures.size());
+//        lecturesTitles.add(lectures.get(0).getTitle());
+//        lecturesTitles.add(lectures.get(1).getTitle());
     }
     
     public ShowCoursesJSFBean() {
@@ -86,19 +94,19 @@ public class ShowCoursesJSFBean implements Serializable {
         this.price = price;
     }
 
-    public List<Courses> getCourses() {
+    public List<Course> getCourses() {
         return courses;
     }
 
-    public void setCourses(List<Courses> courses) {
+    public void setCourses(List<Course> courses) {
         this.courses = courses;
     }
 
-    public List<Lectures> getLectures() {
+    public List<Lecture> getLectures() {
         return lectures;
     }
 
-    public void setLectures(List<Lectures> lectures) {
+    public void setLectures(List<Lecture> lectures) {
         this.lectures = lectures;
     }
 

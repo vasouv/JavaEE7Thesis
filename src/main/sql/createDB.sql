@@ -49,6 +49,15 @@ HTML5, PHP and C++. The IDE provides integrated support for the complete develop
 from project creation through debugging, profiling and deployment. The IDE runs on Windows, Linux, 
 Mac OS X, and other UNIX-based systems.',0,'courses\netbeans\netbeans.png');
 
+insert into courses values (3,'Web Services','Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+Pellentesque eget ante ut eros blandit consectetur nec non ante. Nunc pretium in odio ac tincidunt. 
+Vestibulum ultrices pretium tortor, ac porttitor purus eleifend ut. Sed sagittis lacus elit, sit amet 
+viverra mi imperdiet sit amet. Phasellus nec felis sed lorem feugiat semper ac ut nunc. Morbi congue, 
+ante at ornare efficitur, leo libero sodales tortor, et commodo tortor est ac tortor. Praesent mollis 
+feugiat mattis. Integer sed lacinia tortor. Etiam nec sapien accumsan, ullamcorper nibh vitae, hendrerit 
+justo. Aliquam sed nunc vel lectus pulvinar finibus. Etiam vestibulum odio non magna feugiat consequat 
+non porta est. Etiam luctus dolor a ligula maximus cursus. Integer et blandit turpis.',10,'courses\webservices\webservices.PNG');
+
 -- Creating Lectures tables
 create table lectures (
     idlecture int not null primary key,
@@ -61,6 +70,11 @@ create table lectures (
 
 insert into lectures values(1,2,'Getting Started with JAX-WS','http://youtu.be/BEYnlh78TQ4','courses\netbeans\lec01\Code.txt');
 insert into lectures values(2,2,'Create RESTful Web Services and a Test Client','http://youtu.be/l08u2L-8psk','courses\netbeans\lec02\ZippedCode.zip');
+insert into lectures values(3,1,'Lecture 1','http://youtu.be/99yxMyO9mqQ','courses\javaee7\lec01\Test.java');
+insert into lectures values(4,1,'Lecture 2','http://youtu.be/VXIRT1AVoNc','courses\javaee7\lec02\Lec02.docx');
+insert into lectures values(5,3,'Remote Procedure Call','http://youtu.be/S1ZId7jBThQ','');
+insert into lectures values(6,3,'SOAP & REST Tutorial','http://youtu.be/KzFqke8g0aM','');
+insert into lectures values(7,3,'Translation Web Service MySQL','http://youtu.be/bX8ut4LG7eA','');
 
 create table user_courses (
     user_id int not null,

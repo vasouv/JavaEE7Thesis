@@ -31,18 +31,18 @@
 
             <ui:define name="content">
                 <p:panel>
-                    <p:fieldset legend="#{showCoursesJSFBean.title}" style="margin-bottom:20px">
+                    <p:fieldset id="javaee7" legend="#{showCoursesJSFBean.courses[0].title}" style="margin-bottom:20px">
                         <p:panelGrid styleClass="no-border-pane-grid">
                             <p:row>
                                 <p:column>
-                                    <p:graphicImage name="#{showCoursesJSFBean.image}" height="150" width="150"/>
+                                    <p:graphicImage name="#{showCoursesJSFBean.courses[0].image}" height="150" width="150"/>
                                 </p:column>
                                 <p:column>
-                                    <h:outputText value="#{showCoursesJSFBean.description}"/>
+                                    <h:outputText value="#{showCoursesJSFBean.courses[0].description}"/>
                                 </p:column>
                                 <p:column rowspan="2">
                                     <h:panelGrid columns="2">
-                                        <h:outputText value="#{showCoursesJSFBean.price}"/>
+                                        <h:outputText value="#{showCoursesJSFBean.courses[0].price == 0 ? 'Free' : showCoursesJSFBean.courses[0].price += '$'}"/>
                                         <br/>
                                         <p:button value="Buy"/>
                                     </h:panelGrid>
@@ -50,8 +50,60 @@
                             </p:row>
                             <p:row>
                                 <p:column colspan="2">
-                                    <p:dataList var="lecture" value="#{showCoursesJSFBean.lecturesTitles}">
-                                        #{lecture}
+                                    <p:dataList var="lecture" value="#{showCoursesJSFBean.courses[0].lecturesList}">
+                                        #{lecture.title}
+                                    </p:dataList>
+                                </p:column>
+                            </p:row>
+                        </p:panelGrid>
+                    </p:fieldset>
+                    <p:fieldset id="netbeans" legend="#{showCoursesJSFBean.courses[1].title}" style="margin-bottom:20px">
+                        <p:panelGrid styleClass="no-border-pane-grid">
+                            <p:row>
+                                <p:column>
+                                    <p:graphicImage name="#{showCoursesJSFBean.courses[1].image}" height="150" width="150"/>
+                                </p:column>
+                                <p:column>
+                                    <h:outputText value="#{showCoursesJSFBean.courses[1].description}"/>
+                                </p:column>
+                                <p:column rowspan="2">
+                                    <h:panelGrid columns="2">
+                                        <h:outputText value="#{showCoursesJSFBean.courses[1].price == 0 ? 'Free' : showCoursesJSFBean.courses[1].price += '$'}"/>
+                                        <br/>
+                                        <p:button value="Buy"/>
+                                    </h:panelGrid>
+                                </p:column>
+                            </p:row>
+                            <p:row>
+                                <p:column colspan="2">
+                                    <p:dataList var="lecture" value="#{showCoursesJSFBean.courses[1].lecturesList}">
+                                        #{lecture.title}
+                                    </p:dataList>
+                                </p:column>
+                            </p:row>
+                        </p:panelGrid>
+                    </p:fieldset>
+                    <p:fieldset id="webservices" legend="#{showCoursesJSFBean.courses[2].title}" style="margin-bottom:20px">
+                        <p:panelGrid styleClass="no-border-pane-grid">
+                            <p:row>
+                                <p:column>
+                                    <p:graphicImage name="#{showCoursesJSFBean.courses[2].image}" height="150" width="150"/>
+                                </p:column>
+                                <p:column>
+                                    <h:outputText value="#{showCoursesJSFBean.courses[2].description}"/>
+                                </p:column>
+                                <p:column rowspan="2">
+                                    <h:panelGrid columns="2">
+                                        <h:outputText value="#{showCoursesJSFBean.courses[2].price == 0 ? 'Free' : showCoursesJSFBean.courses[2].price += '$'}"/>
+                                        <br/>
+                                        <p:button value="Buy"/>
+                                    </h:panelGrid>
+                                </p:column>
+                            </p:row>
+                            <p:row>
+                                <p:column colspan="2">
+                                    <p:dataList var="lecture" value="#{showCoursesJSFBean.courses[2].lecturesList}">
+                                        #{lecture.title}
                                     </p:dataList>
                                 </p:column>
                             </p:row>

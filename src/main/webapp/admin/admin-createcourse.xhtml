@@ -42,23 +42,23 @@
                         <p:tab title="Course Info">
                             <h:panelGrid columns="2">
                                 <p:outputLabel for="cTitle" value="Course Title:"/>
-                                <p:inputText id="cTitle" value="#{createCourseJSFBean.course.title}"/>
+                                <p:inputText id="cTitle" value="#{createCourseJSFBean.course.title}" required="true" requiredMessage="Title cannot be empty"/>
                                 <p:outputLabel for="cDesc" value="Description:"/>
-                                <p:inputTextarea id="cDesc" value="#{createCourseJSFBean.course.description}"/>
+                                <p:inputTextarea id="cDesc" value="#{createCourseJSFBean.course.description}" required="true" requiredMessage="Description cannot be empty"/>
                                 <p:outputLabel for="cPrice" value="Price:"/>
-                                <p:inputText id="cPrice" value="#{createCourseJSFBean.course.price}">
+                                <p:inputText id="cPrice" value="#{createCourseJSFBean.course.price}" required="true" requiredMessage="Price cannot be empty">
                                     <f:converter converterId="javax.faces.Integer"/>
                                 </p:inputText>
                                 <p:outputLabel for="cImage" value="Image:"/>
-                                <p:inputText id="cImage" value="#{createCourseJSFBean.course.image}"/>
+                                <p:inputText id="cImage" value="#{createCourseJSFBean.course.image}" required="true" requiredMessage="Image dir cannot be empty"/>
                             </h:panelGrid>
                         </p:tab>
                         <p:tab title="Lecture 1">
                             <h:panelGrid columns="2">
                                 <p:outputLabel for="l1Title" value="Title:"/>
-                                <p:inputText id="l1Title" value="#{createCourseJSFBean.lectures[0].title}"/>
+                                <p:inputText id="l1Title" value="#{createCourseJSFBean.lectures[0].title}" required="true" requiredMessage="Lecture title cannot be empty"/>
                                 <p:outputLabel for="l1Youtube" value="Youtube:"/>
-                                <p:inputText id="l1Youtube" value="#{createCourseJSFBean.lectures[0].youtube}"/>
+                                <p:inputText id="l1Youtube" value="#{createCourseJSFBean.lectures[0].youtube}" required="true" requiredMessage="Youtube link cannot be empty"/>
                                 <p:outputLabel for="l1Material" value="Material:"/>
                                 <p:inputText id="l1Material" value="#{createCourseJSFBean.lectures[0].material}"/>
                             </h:panelGrid>
@@ -66,9 +66,9 @@
                         <p:tab title="Lecture 2">
                             <h:panelGrid columns="2">
                                 <p:outputLabel for="l2Title" value="Title:"/>
-                                <p:inputText id="l2Title" value="#{createCourseJSFBean.lectures[1].title}"/>
+                                <p:inputText id="l2Title" value="#{createCourseJSFBean.lectures[1].title}" required="true" requiredMessage="Lecture title cannot be empty"/>
                                 <p:outputLabel for="l2Youtube" value="Youtube:"/>
-                                <p:inputText id="l2Youtube" value="#{createCourseJSFBean.lectures[1].youtube}"/>
+                                <p:inputText id="l2Youtube" value="#{createCourseJSFBean.lectures[1].youtube}" required="true" requiredMessage="Youtube link cannot be empty"/>
                                 <p:outputLabel for="l2Material" value="Material:"/>
                                 <p:inputText id="l2Material" value="#{createCourseJSFBean.lectures[1].material}"/>
                             </h:panelGrid>
@@ -76,9 +76,9 @@
                         <p:tab title="Lecture 3">
                             <h:panelGrid columns="2">
                                 <p:outputLabel for="l3Title" value="Title:"/>
-                                <p:inputText id="l3Title" value="#{createCourseJSFBean.lectures[2].title}"/>
+                                <p:inputText id="l3Title" value="#{createCourseJSFBean.lectures[2].title}" required="true" requiredMessage="Lecture title cannot be empty"/>
                                 <p:outputLabel for="l3Youtube" value="Youtube:"/>
-                                <p:inputText id="l3Youtube" value="#{createCourseJSFBean.lectures[2].youtube}"/>
+                                <p:inputText id="l3Youtube" value="#{createCourseJSFBean.lectures[2].youtube}" required="true" requiredMessage="Youtube link cannot be empty"/>
                                 <p:outputLabel for="l3Material" value="Material:"/>
                                 <p:inputText id="l3Material" value="#{createCourseJSFBean.lectures[2].material}"/>
                             </h:panelGrid>
@@ -86,6 +86,7 @@
                     </p:tabView>
                     <p:commandButton action="#{createCourseJSFBean.createCourse()}" value="Create Course"/>
                 </h:form>
+                <p:messages id="errors" style="color: red"/>
             </ui:define>
 
         </ui:composition>

@@ -41,6 +41,11 @@ public class CourseFacade extends AbstractFacade<Course> {
         return em.createQuery("SELECT c FROM Course c").getResultList();
     }
     
+    /**
+     * Finds the Course MAX ID.
+     * 
+     * @return Integer max id
+     */
     public Integer findCourseMaxID() {
         return (Integer)em.createQuery("select max(c.idcourse) from Course c").getSingleResult();
     }

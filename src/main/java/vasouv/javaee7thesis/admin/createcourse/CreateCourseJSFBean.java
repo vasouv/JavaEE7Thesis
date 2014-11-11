@@ -31,34 +31,60 @@ public class CreateCourseJSFBean implements Serializable {
     @EJB
     LectureFacade lectureFacade;
     
+    //Objects to hold values from the View
     List<Lecture> lectures;
     Course course;
+    
+    //Active lecture ID for persistence
     int lectureID;
     
     @PostConstruct
     public void init() {
+        
+        //Retrieves the max Lecture ID from the DB
         lectureID = lectureFacade.findLectureMaxID();
+        
+        //Populates the Lectures list with Lecture objects
         populateLectures();
     }
     
     public CreateCourseJSFBean() {
         this.lectures = new ArrayList();
         course = new Course();
-//        lectureID = 0;
     }
     
+    /**
+     * Creates a new Course.
+     * 
+     * When the admin presses the Create Course button,
+     * the IDs for the Course and Lectures are set,
+     * the Course connects to its Lectures and the
+     * Course is saved to the DB.
+     */
     public void createCourse() {
         setCourseLecturesIDs();
         addLecturesToTheCourse();
         persistCourse();
     }
     
+    /**
+     * Adds Lectures objects in the List.
+     * 
+     * Otherwise, throws NullPointerException. Lol, noob mistake!
+     */
     private void populateLectures(){
         lectures.add(new Lecture());
         lectures.add(new Lecture());
         lectures.add(new Lecture());
     }
     
+    /**
+     * Sets the IDs for the Course and Lectures.
+     * 
+     * The Course ID is set by finding the max ID from the DB and incrementing by 1.
+     * For each of the Lectures in the list, the lecturesID is first incremented by 1
+     * and the courseID is set accordingly.
+     */
     private void setCourseLecturesIDs() {
         course.setIdcourse(courseFacade.findCourseMaxID() + 1);
         for(Lecture currentLec : lectures) {
@@ -68,10 +94,22 @@ public class CreateCourseJSFBean implements Serializable {
         }
     }
     
+    /**
+     * Adds Lectures to the Course.
+     * 
+     * The Lectures list is set to the Course object 
+     * in order to satisfy the DB relationship.
+     */
     private void addLecturesToTheCourse(){
         course.setLecturesList(lectures);
     }
     
+    /**
+     * Persists the Course.
+     * 
+     * Calls the EJB create() method and persists the Course to the DB
+     * with its Lectures.
+     */
     private void persistCourse() {
         courseFacade.create(course);
     }

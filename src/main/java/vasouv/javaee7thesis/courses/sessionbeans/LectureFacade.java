@@ -41,6 +41,11 @@ public class LectureFacade extends AbstractFacade<Lecture> {
         return em.createQuery("select l from Lecture l where l.courseid.title = :cname").setParameter("cname", courseName).getResultList();
     }
     
+    /**
+     * Finds the Lectures MAX ID.
+     * 
+     * @return Integer max id
+     */
     public Integer findLectureMaxID() {
         return (Integer)em.createQuery("select max(l.idlecture) from Lecture l").getSingleResult();
     }

@@ -7,9 +7,7 @@ package vasouv.javaee7thesis.courses;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.inject.Named;
@@ -29,12 +27,12 @@ public class ShowCoursesJSFBean implements Serializable {
     @EJB
     LectureFacade lecturesFacade;
     
-    //This list holds the data retrieved from the DB, its contents
-    //will be put into a HashMap
+    //This list holds the data retrieved from the DB
     List<Course> courses;
     
     @PostConstruct
     public void init() {
+        //Calls the Courses EJB and adds the findAll List to the courses List
         courses.addAll(coursesFacade.findAll());
     }
     

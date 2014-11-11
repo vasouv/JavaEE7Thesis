@@ -28,4 +28,9 @@
         <managed-bean-class>vasouv.javaee7thesis.courses.ShowCoursesJSFBean</managed-bean-class>
         <managed-bean-scope>request</managed-bean-scope>
     </managed-bean>
+    <managed-bean>
+        <managed-bean-name>createCourseJSFBean</managed-bean-name>
+        <managed-bean-class>vasouv.javaee7thesis.admin.createcourse.CreateCourseJSFBean</managed-bean-class>
+        <managed-bean-scope>view</managed-bean-scope>
+    </managed-bean>
 </faces-config>

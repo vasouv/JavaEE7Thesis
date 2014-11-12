@@ -109,6 +109,32 @@
                             </p:row>
                         </p:panelGrid>
                     </p:fieldset>
+                    <p:fieldset id="java8" legend="#{showCoursesJSFBean.courses[3].title}" style="margin-bottom:20px">
+                        <p:panelGrid styleClass="no-border-pane-grid">
+                            <p:row>
+                                <p:column>
+                                    <p:graphicImage name="#{showCoursesJSFBean.courses[3].image}" height="150" width="150"/>
+                                </p:column>
+                                <p:column>
+                                    <h:outputText value="#{showCoursesJSFBean.courses[3].description}"/>
+                                </p:column>
+                                <p:column rowspan="2">
+                                    <h:panelGrid columns="2">
+                                        <h:outputText value="#{showCoursesJSFBean.courses[3].price == 0 ? 'Free' : showCoursesJSFBean.courses[2].price += '$'}"/>
+                                        <br/>
+                                        <p:button value="Buy"/>
+                                    </h:panelGrid>
+                                </p:column>
+                            </p:row>
+                            <p:row>
+                                <p:column colspan="2">
+                                    <p:dataList var="lecture" value="#{showCoursesJSFBean.courses[3].lecturesList}">
+                                        #{lecture.title}
+                                    </p:dataList>
+                                </p:column>
+                            </p:row>
+                        </p:panelGrid>
+                    </p:fieldset>
                 </p:panel>
             </ui:define>
 

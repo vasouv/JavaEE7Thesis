@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <title>Shopping Cart</title>
+    </h:head>
+    
+    <h:body>
+
+        <ui:composition template="./../resources/basicTemplate.xhtml">
+
+            <ui:define name="top">
+                <h1>Your shopping cart contents</h1>
+            </ui:define>
+
+            <ui:define name="left">
+                <p:button outcome="/index" value="Home Page" />
+                <br/>
+                <br/>
+                <p:button outcome="main" value="Users Main Area"/>
+                <br/>
+                <br/>
+                <p:button outcome="viewcourses" value="View Courses"/>
+                <br/>
+                <br/>
+                <h:form>
+                    <p:commandButton action="#{authenticationJSFBean.logout()}" value="Logout" />
+                </h:form>
+            </ui:define>
+
+            <ui:define name="right">
+                <p:button outcome="profile" value="Your Profile"/>
+                <br/>
+                <br/>
+                <p:button value="Checkout"/>
+            </ui:define>
+
+            <ui:define name="content">
+                <h:form id="cartForm">
+                    <p:dataTable id="cartCourses" var="course" selectionMode="single">
+                        <p:column headerText="Course Name">
+                            <!--Display the course title in h:outputText-->
+                        </p:column>
+                        <p:column headerText="Number of Lectures">
+                            <!--Display the course lectures amount-->
+                        </p:column>
+                        <p:column headerText="Price">
+                            <!--Show the price-->
+                        </p:column>
+                        <f:facet name="footer">
+                            <!--Show total amount of course price-->
+                            <h:panelGrid columns="3">
+                                <p:button value="Remove Course"/>
+                                <p:button value="Clear Cart"/>
+                                <p:button value="CHECKOUT"/>
+                            </h:panelGrid>
+                        </f:facet>
+                    </p:dataTable>
+                </h:form>
+            </ui:define>
+
+        </ui:composition>
+
+    </h:body>
+</html>

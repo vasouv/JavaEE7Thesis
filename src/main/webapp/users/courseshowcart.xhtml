@@ -42,21 +42,19 @@
 
             <ui:define name="content">
                 <h:form id="cartForm">
-                    <p:dataTable id="cartCourses" var="course" selectionMode="single">
+                    <p:dataTable id="cartCourses" value="#{shoppingCart.coursesToBuy}" var="course" selection="#{shoppingCart.selectedToRemove}" rowKey="#{course.title}">
+                        <p:column selectionMode="single" style="width:16px;text-align: center"/>
                         <p:column headerText="Course Name">
-                            <!--Display the course title in h:outputText-->
-                        </p:column>
-                        <p:column headerText="Number of Lectures">
-                            <!--Display the course lectures amount-->
+                            <h:outputText value="#{course.title}"/>
                         </p:column>
                         <p:column headerText="Price">
-                            <!--Show the price-->
+                            <h:outputText value="#{course.price}"/>
                         </p:column>
                         <f:facet name="footer">
-                            <!--Show total amount of course price-->
+                            The total price for your courses is: #{shoppingCart.totalPrice}
                             <h:panelGrid columns="3">
-                                <p:button value="Remove Course"/>
-                                <p:button value="Clear Cart"/>
+                                <p:commandButton action="#{shoppingCart.removeCourse()}" ajax="false" value="Remove Course"/>
+                                <p:commandButton action="#{shoppingCart.clearCart()}" ajax="false" value="Clear Cart"/>
                                 <p:button value="CHECKOUT"/>
                             </h:panelGrid>
                         </f:facet>

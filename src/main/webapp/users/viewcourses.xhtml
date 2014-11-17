@@ -50,7 +50,7 @@
                                     <h:panelGrid columns="2">
                                         <h:outputText value="#{showCoursesJSFBean.courses[0].price == 0 ? 'Free' : showCoursesJSFBean.courses[0].price += '$'}"/>
                                         <br/>
-                                        <p:button value="Buy"/>
+                                        <p:commandButton action="#{showCoursesJSFBean.setTestCourse()}" value="Buy"/>
                                     </h:panelGrid>
                                 </p:column>
                             </p:row>

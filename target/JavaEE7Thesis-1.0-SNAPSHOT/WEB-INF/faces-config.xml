@@ -3,34 +3,5 @@
               xmlns="http://xmlns.jcp.org/xml/ns/javaee"
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
               xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
-    <managed-bean>
-        <managed-bean-name>registerNewUser</managed-bean-name>
-        <managed-bean-class>vasouv.javaee7thesis.register.RegisterUserJSFBean</managed-bean-class>
-        <managed-bean-scope>request</managed-bean-scope>
-    </managed-bean>
-    <managed-bean>
-        <managed-bean-name>showAllUsersJSFBean</managed-bean-name>
-        <managed-bean-class>vasouv.javaee7thesis.admin.showusers.ShowAllUsersJSFBean</managed-bean-class>
-        <managed-bean-scope>view</managed-bean-scope>
-    </managed-bean>
-    <managed-bean>
-        <managed-bean-name>createUserJSFBean</managed-bean-name>
-        <managed-bean-class>vasouv.javaee7thesis.admin.createuser.CreateUserJSFBean</managed-bean-class>
-        <managed-bean-scope>request</managed-bean-scope>
-    </managed-bean>
-    <managed-bean>
-        <managed-bean-name>authenticationJSFBean</managed-bean-name>
-        <managed-bean-class>vasouv.javaee7thesis.login.AuthenticationController</managed-bean-class>
-        <managed-bean-scope>session</managed-bean-scope>
-    </managed-bean>
-    <managed-bean>
-        <managed-bean-name>showCoursesJSFBean</managed-bean-name>
-        <managed-bean-class>vasouv.javaee7thesis.courses.ShowCoursesJSFBean</managed-bean-class>
-        <managed-bean-scope>request</managed-bean-scope>
-    </managed-bean>
-    <managed-bean>
-        <managed-bean-name>createCourseJSFBean</managed-bean-name>
-        <managed-bean-class>vasouv.javaee7thesis.admin.createcourse.CreateCourseJSFBean</managed-bean-class>
-        <managed-bean-scope>view</managed-bean-scope>
-    </managed-bean>
+    
 </faces-config>

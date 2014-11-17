@@ -5,7 +5,10 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:p="http://primefaces.org/ui">
 
-    <body>
+    <h:head>
+        <title>Available courses</title>
+    </h:head>
+    <h:body>
 
         <ui:composition template="./../resources/basicTemplate.xhtml">
 
@@ -27,6 +30,9 @@
 
             <ui:define name="right">
                 <p:button outcome="profile" value="Your Profile"/>
+                <br/>
+                <br/>
+                <p:button outcome="courseshowcart" value="Shopping Cart"/>
             </ui:define>
 
             <ui:define name="content">
@@ -44,7 +50,7 @@
                                     <h:panelGrid columns="2">
                                         <h:outputText value="#{showCoursesJSFBean.courses[0].price == 0 ? 'Free' : showCoursesJSFBean.courses[0].price += '$'}"/>
                                         <br/>
-                                        <p:button value="Buy"/>
+                                        <p:commandButton action="#{showCoursesJSFBean.setTestCourse()}" value="Buy"/>
                                     </h:panelGrid>
                                 </p:column>
                             </p:row>
@@ -140,5 +146,5 @@
 
         </ui:composition>
 
-    </body>
+    </h:body>
 </html>

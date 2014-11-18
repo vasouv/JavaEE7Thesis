@@ -31,6 +31,7 @@ public class ShowCoursesJSFBean implements Serializable {
     @EJB
     LectureFacade lecturesFacade;
     
+    //Injecting the CDI bean so we can add courses at will
     @Inject
     ShoppingCart shoppingCart;
     
@@ -47,10 +48,25 @@ public class ShowCoursesJSFBean implements Serializable {
         this.courses = new ArrayList();
     }
     
-    public void setTestCourse() {
-        shoppingCart.addCourse(courses.get(0));
-        shoppingCart.addCourse(courses.get(1));
+    /**
+     * TODO: Quick and dirty adding to cart.
+     * 
+     * Needs a much better implementation
+     * 
+     * @param c String entered to know which course to add
+     */
+    public void addToShoppingCart(String c) {
+        switch (c) {
+            case "0": shoppingCart.addCourse(courses.get(0)); break;
+            case "1": shoppingCart.addCourse(courses.get(1)); break;
+            case "2": shoppingCart.addCourse(courses.get(2)); break;
+            case "3": shoppingCart.addCourse(courses.get(3)); break;
+        }
     }
+    
+    /**
+     * TODO: I need a dynamic way to build the fieldsets.
+     */
     
     // GETTERS & SETTERS
 
@@ -69,7 +85,5 @@ public class ShowCoursesJSFBean implements Serializable {
     public void setShoppingCart(ShoppingCart shoppingCart) {
         this.shoppingCart = shoppingCart;
     }
-    
-    
 
 }

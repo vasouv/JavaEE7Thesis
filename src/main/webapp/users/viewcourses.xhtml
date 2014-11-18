@@ -50,7 +50,7 @@
                                     <h:panelGrid columns="2">
                                         <h:outputText value="#{showCoursesJSFBean.courses[0].price == 0 ? 'Free' : showCoursesJSFBean.courses[0].price += '$'}"/>
                                         <br/>
-                                        <p:commandButton action="#{showCoursesJSFBean.setTestCourse()}" value="Buy"/>
+                                        <p:commandButton action="#{showCoursesJSFBean.addToShoppingCart('0')}" value="Buy"/>
                                     </h:panelGrid>
                                 </p:column>
                             </p:row>
@@ -76,7 +76,7 @@
                                     <h:panelGrid columns="2">
                                         <h:outputText value="#{showCoursesJSFBean.courses[1].price == 0 ? 'Free' : showCoursesJSFBean.courses[1].price += '$'}"/>
                                         <br/>
-                                        <p:button value="Buy"/>
+                                        <p:commandButton action="#{showCoursesJSFBean.addToShoppingCart('1')}" value="Buy"/>
                                     </h:panelGrid>
                                 </p:column>
                             </p:row>
@@ -102,7 +102,7 @@
                                     <h:panelGrid columns="2">
                                         <h:outputText value="#{showCoursesJSFBean.courses[2].price == 0 ? 'Free' : showCoursesJSFBean.courses[2].price += '$'}"/>
                                         <br/>
-                                        <p:button value="Buy"/>
+                                        <p:commandButton action="#{showCoursesJSFBean.addToShoppingCart('2')}" value="Buy"/>
                                     </h:panelGrid>
                                 </p:column>
                             </p:row>
@@ -128,7 +128,7 @@
                                     <h:panelGrid columns="2">
                                         <h:outputText value="#{showCoursesJSFBean.courses[3].price == 0 ? 'Free' : showCoursesJSFBean.courses[2].price += '$'}"/>
                                         <br/>
-                                        <p:button value="Buy"/>
+                                        <p:commandButton action="#{showCoursesJSFBean.addToShoppingCart('3')}" value="Buy"/>
                                     </h:panelGrid>
                                 </p:column>
                             </p:row>

@@ -24,6 +24,10 @@ import vasouv.javaee7thesis.courses.sessionbeans.LectureFacade;
 @ViewScoped
 @Named("createCourseJSFBean")
 public class CreateCourseJSFBean implements Serializable {
+    
+    /**
+     * TODO: I need a dynamic tabview to create courses.
+     */
 
     @EJB
     CourseFacade courseFacade;

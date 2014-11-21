@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <title>Checkout and Purchase</title>
+    </h:head>
+
+    <h:body>
+
+        <ui:composition template="./../resources/basicTemplate.xhtml">
+
+            <ui:define name="top">
+                <h1>Checkout</h1>
+            </ui:define>
+
+            <ui:define name="left">
+                <p:button outcome="/index" value="Home Page" />
+                <br/>
+                <br/>
+                <p:button outcome="main" value="Users Main Area"/>
+                <br/>
+                <br/>
+                <p:button outcome="viewcourses" value="View Courses"/>
+                <br/>
+                <br/>
+                <h:form>
+                    <p:commandButton action="#{authenticationJSFBean.logout()}" value="Logout" />
+                </h:form>
+            </ui:define>
+
+            <ui:define name="right">
+                <p:button outcome="profile" value="Your Profile"/>
+                <br/>
+                <br/>
+            </ui:define>
+
+            <ui:define name="content">
+                <h:form>
+                    <p>Hi #{checkoutBean.username}! Ready to complete your purchase?
+                    Please enter your credit card number below and hit Purchase!</p>
+                    <p>Your credit card number must follow this pattern: xxxx-xxxx-xxxx-xxxx</p>
+                    <p:outputLabel for="creditcard" value="Enter your credit card:"/>
+                    <p:inputText id="creditcard" required="true" requiredMessage="Check your credit card number!">
+                        <f:validateRegex pattern="\d{16}|\d{4} \d{4} \d{4} \d{4}|\d{4}-\d{4}-\d{4}-\d{4}"/>
+                    </p:inputText>
+                    <p:dataList value="#{shoppingCart.coursesToBuy}" var="course">
+                        #{course.title} - #{course.price}
+                    </p:dataList>
+                    <p:commandButton action="#{checkoutBean.finalizePurchase()}" value="Purchase"/>
+                </h:form>
+                <p:messages style="color: red"/>
+
+            </ui:define>
+
+        </ui:composition>
+
+    </h:body>
+</html>

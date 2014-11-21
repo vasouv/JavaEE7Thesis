@@ -55,7 +55,7 @@
                             <h:panelGrid columns="3">
                                 <p:commandButton action="#{shoppingCart.removeCourse()}" ajax="false" value="Remove Course"/>
                                 <p:commandButton action="#{shoppingCart.clearCart()}" ajax="false" value="Clear Cart"/>
-                                <p:button value="CHECKOUT"/>
+                                <p:commandButton action="#{shoppingCart.buyCourses()}" value="CHECKOUT"/>
                             </h:panelGrid>
                         </f:facet>
                     </p:dataTable>

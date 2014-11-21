@@ -1,0 +1,50 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+    <h:head>
+        <title>Congratulations for your purchase</title>
+    </h:head>
+    
+    <h:body>
+
+        <ui:composition template="./../resources/basicTemplate.xhtml">
+
+            <ui:define name="top">
+                <h1>Congratulations for your purchase!</h1>
+            </ui:define>
+
+            <ui:define name="left">
+                <p:button outcome="/index" value="Home Page" />
+                <br/>
+                <br/>
+                <p:button outcome="main" value="Users Main Area"/>
+                <br/>
+                <br/>
+                <p:button outcome="viewcourses" value="View Courses"/>
+                <br/>
+                <br/>
+            </ui:define>
+
+            <ui:define name="right">
+                <p:button outcome="profile" value="Your Profile"/>
+                <br/>
+                <br/>
+            </ui:define>
+
+            <ui:define name="content">
+                <p>
+                    Congratulations for your new courses! You can view them through your Profile
+                    page on the top right. We hope you gain much through our courses and you're more
+                    than welcome to check your knowledge through our carefully designed tests.
+                </p>
+            </ui:define>
+
+        </ui:composition>
+
+    </h:body>
+</html>

@@ -43,7 +43,7 @@ public class ShoppingCart implements Serializable {
     }
     
     public String buyCourses() {
-        return "";
+        return "checkout";
     }
     
     public void clearCart() {

@@ -37,9 +37,14 @@
             <ui:define name="content">
                 <h2>Showing all registered users!</h2>
                 <h:form>
+                    
+                    <!--The growl is used to show pop-up messages-->
                     <p:growl id="growl" showDetail="true" life="5000" />
+                    
                     Search for user by:
                     <p:panelGrid columns="3">
+                        
+                        <!--Radio buttons to search for user by username, name or email-->
                         <p:selectOneRadio id="searchBy" 
                                           value="#{showAllUsersJSFBean.searchBy}" 
                                           required="true" 
@@ -48,14 +53,20 @@
                             <f:selectItem itemValue="name" itemLabel="Name"/>
                             <f:selectItem itemValue="email" itemLabel="Email"/>
                         </p:selectOneRadio>
+                        
+                        <!--User types the search term. If empty, shows all users in DB-->
                         <p:inputText id="searchTerm" 
                                      value="#{showAllUsersJSFBean.searchTerm}" 
                                      title="Enter search term or it defaults to select * from Users"/>
+                        
+                        <!--Searches for users and then updates the DataTable below-->
                         <p:commandButton id="searchUser" value="Search" 
                                          action="#{showAllUsersJSFBean.searchByField}" 
                                          update="showUsers"/>
                     </p:panelGrid>
 
+                    <!--Tag var references each object in the datatable. Selection marks the specified
+                    object for deletion. Rowkey is the unique identifier for each row.-->
                     <p:dataTable var="user" id="showUsers" 
                                  value="#{showAllUsersJSFBean.userList}" 
                                  selection="#{showAllUsersJSFBean.selectedToDelete}" 
@@ -66,7 +77,9 @@
                             Showing Users
                         </f:facet>
 
+                        <!--Can only select one row. Puts radio buttons in the column-->
                         <p:column selectionMode="single" style="width:16px;text-align: center"/>
+                        
                         <p:column headerText="ID">
                             <h:outputText value="#{user.id}"/>
                         </p:column>
@@ -83,16 +96,20 @@
                             <h:outputText value="#{user.password}"/>
                         </p:column>
 
+                        <!--Displays the No. of users that we searched for, and the total users in DB-->
                         <f:facet name="footer">
                             You see #{showAllUsersJSFBean.userList.size()} of 
                             #{showAllUsersJSFBean.numberOfUsers} total users
                             <br/>
                             <br/>
+                            
+                            <!--Navigates to a new page to edit the user's credentials-->
                             <p:button id="editUser" value="Edit"/>
+                            
+                            <!--Deletes the selected user, shows a growl message and refreshes the page-->
                             <p:commandButton id="deleteUser" value="! DELETE !" 
                                              action="#{showAllUsersJSFBean.deleteSelectedUser}" 
                                              update="growl" ajax="false"/>
-
 
                         </f:facet>
 

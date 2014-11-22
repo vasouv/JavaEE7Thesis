@@ -26,14 +26,19 @@ public class CheckoutBean implements Serializable {
     @Inject
     ShoppingCart shoppingCart;
     
+    //Retrieves the logged in User's username
     @EJB
     AuthenticationEJB auth;
     
+    //Shows the username in the View
     String username;
+    
+    //Credit card number - simply a String
     String creditCard;
     
     @PostConstruct
     public void init() {
+        //Sets the username so it shows upon View time
         username = auth.getUser().getUsername();
     }
     
@@ -46,10 +51,14 @@ public class CheckoutBean implements Serializable {
         return "checkoutcomplete";
     }
     
+    
     private void persistUserCourses() {
-        
+        //TO-DO
     }
     
+    /**
+     * Clears the shopping cart.
+     */
     private void clearShoppingCart() {
         shoppingCart.clearCart();
     }

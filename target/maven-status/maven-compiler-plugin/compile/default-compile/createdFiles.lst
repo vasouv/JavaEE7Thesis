@@ -1,6 +1,7 @@
 vasouv\javaee7thesis\register\sessionbeans\AbstractFacade.class
 vasouv\javaee7thesis\register\RegisterUserJSFBean.class
 vasouv\javaee7thesis\admin\createcourse\CreateCourseJSFBean.class
+vasouv\javaee7thesis\checkout\CheckoutBean.class
 vasouv\javaee7thesis\courses\dynamicfieldset\DBFieldset.class
 vasouv\javaee7thesis\courses\sessionbeans\LectureFacade.class
 vasouv\javaee7thesis\login\AuthenticationEJB.class

@@ -3,19 +3,24 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package vasouv.javaee7thesis.register;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import vasouv.javaee7thesis.courses.Course;
 
 /**
  *
@@ -31,6 +36,7 @@ import javax.validation.constraints.Size;
 //    @NamedQuery(name = "Users.findByEmail", query = "SELECT u FROM Users u WHERE u.email = :email")})
 //    @NamedQuery(name = "Users.findAllUsers", query = "SELECT u FROM USERS u")})
 public class User implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
@@ -58,6 +64,9 @@ public class User implements Serializable {
     @Size(min = 1, max = 255)
     @Column(name = "EMAIL")
     private String email;
+
+    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "users")
+    private List<Course> courses;
 
     public User() {
     }
@@ -114,6 +123,14 @@ public class User implements Serializable {
         this.email = email;
     }
 
+    public List<Course> getCourses() {
+        return courses;
+    }
+
+    public void setCourses(List<Course> courses) {
+        this.courses = courses;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -138,5 +155,5 @@ public class User implements Serializable {
     public String toString() {
         return "vasouv.javaee7thesis.register.Users[ id=" + id + " ]";
     }
-    
+
 }

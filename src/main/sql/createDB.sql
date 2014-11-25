@@ -76,18 +76,18 @@ insert into lectures values(5,3,'Remote Procedure Call','http://youtu.be/S1ZId7j
 insert into lectures values(6,3,'SOAP & REST Tutorial','http://youtu.be/KzFqke8g0aM','');
 insert into lectures values(7,3,'Translation Web Service MySQL','http://youtu.be/bX8ut4LG7eA','');
 
-create table user_courses (
-    user_id int not null,
-    course_id int not null,
-    primary key (user_id,course_id),
-    foreign key (user_id) references users (id),
-    foreign key (course_id) references courses (idcourse)
+create table usercourses (
+    userid int not null,
+    courseid int not null,
+    primary key (userid,courseid),
+    foreign key (userid) references users (id),
+    foreign key (courseid) references courses (idcourse)
 );
 
-insert into user_courses values(1,1);
-insert into user_courses values(1,2);
-insert into user_courses values(2,1);
-insert into user_courses values(3,2);
+insert into usercourses values(1,1);
+insert into usercourses values(1,2);
+insert into usercourses values(2,1);
+insert into usercourses values(3,2);
 
 -- create table courselectures (
 --     course_id int not null,

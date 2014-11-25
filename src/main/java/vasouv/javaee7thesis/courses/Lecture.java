@@ -50,6 +50,7 @@ public class Lecture implements Serializable {
     @Size(max = 200)
     @Column(name = "MATERIAL")
     private String material;
+    
     @JoinColumn(name = "COURSEID", referencedColumnName = "IDCOURSE")
     @ManyToOne(optional = false)
     private Course courseid;

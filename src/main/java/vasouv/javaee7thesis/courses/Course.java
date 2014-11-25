@@ -12,13 +12,17 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.Lob;
+import javax.persistence.ManyToMany;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import vasouv.javaee7thesis.register.User;
 
 /**
  *
@@ -33,6 +37,7 @@ import javax.validation.constraints.Size;
     @NamedQuery(name = "Courses.findByPrice", query = "SELECT c FROM Course c WHERE c.price = :price"),
     @NamedQuery(name = "Courses.findByImage", query = "SELECT c FROM Course c WHERE c.image = :image")})
 public class Course implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
@@ -56,8 +61,15 @@ public class Course implements Serializable {
     @Size(min = 1, max = 255)
     @Column(name = "IMAGE")
     private String image;
+
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "courseid")
     private List<Lecture> lecturesList;
+
+    @JoinTable(name="USERCOURSES", 
+            joinColumns = { @JoinColumn(name = "COURSEID", referencedColumnName = "IDCOURSE") },
+            inverseJoinColumns = { @JoinColumn(name = "USERID", referencedColumnName = "ID") })
+    @ManyToMany
+    private List<User> users;
 
     public Course() {
     }
@@ -121,6 +133,14 @@ public class Course implements Serializable {
         this.lecturesList = lecturesList;
     }
 
+    public List<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(List<User> users) {
+        this.users = users;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
@@ -145,5 +165,5 @@ public class Course implements Serializable {
     public String toString() {
         return "vasouv.javaee7thesis.courses.Courses[ idcourse=" + idcourse + " ]";
     }
-    
+
 }

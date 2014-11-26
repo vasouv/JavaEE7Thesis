@@ -10,6 +10,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import vasouv.javaee7thesis.courses.Course;
+import vasouv.javaee7thesis.register.User;
 
 /**
  *
@@ -48,6 +49,12 @@ public class CourseFacade extends AbstractFacade<Course> {
      */
     public Integer findCourseMaxID() {
         return (Integer)em.createQuery("select max(c.idcourse) from Course c").getSingleResult();
+    }
+    
+    public void setMyUser(User u) {
+        Course c = (Course)em.createNamedQuery("Courses.findByIdcourse").setParameter("idcourse", 3).getSingleResult();
+        c.getUsers().add(u);
+        em.merge(c);
     }
     
 }

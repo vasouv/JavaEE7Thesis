@@ -6,13 +6,18 @@
 package vasouv.javaee7thesis.checkout;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
+import vasouv.javaee7thesis.courses.Course;
+import vasouv.javaee7thesis.courses.sessionbeans.CourseFacade;
 import vasouv.javaee7thesis.login.AuthenticationEJB;
+import vasouv.javaee7thesis.register.User;
+import vasouv.javaee7thesis.register.sessionbeans.UserFacade;
 import vasouv.javaee7thesis.shoppingcart.ShoppingCart;
 
 /**
@@ -25,6 +30,12 @@ public class CheckoutBean implements Serializable {
 
     @Inject
     ShoppingCart shoppingCart;
+    
+    @EJB
+    CourseFacade courseFacade;
+    
+    @EJB
+    UserFacade userFacade;
     
     //Retrieves the logged in User's username
     @EJB
@@ -53,7 +64,9 @@ public class CheckoutBean implements Serializable {
     
     
     private void persistUserCourses() {
-        //TO-DO
+        User use = userFacade.findByUsernameSingle(username);
+        
+        courseFacade.setMyUser(use);
     }
     
     /**

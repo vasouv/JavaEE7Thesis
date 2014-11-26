@@ -158,6 +158,10 @@ public class UserFacade extends AbstractFacade<User> {
         
         log.log(Level.INFO,"User {0}" + " " + "was successfully removed!", us.getName());
     }
+    
+    public User findByUsernameSingle(String user) {
+        return (User)em.createQuery("select u from User u where u.username = :us").setParameter("us", user).getSingleResult();
+    }
 
     @Override
     protected EntityManager getEntityManager() {

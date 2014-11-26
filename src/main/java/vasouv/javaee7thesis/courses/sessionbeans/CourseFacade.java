@@ -51,8 +51,18 @@ public class CourseFacade extends AbstractFacade<Course> {
         return (Integer)em.createQuery("select max(c.idcourse) from Course c").getSingleResult();
     }
     
-    public void setMyUser(User u) {
-        Course c = (Course)em.createNamedQuery("Courses.findByIdcourse").setParameter("idcourse", 3).getSingleResult();
+    /**
+     * Sets the relationship between Courses and Users.
+     * 
+     * A course is retrieved from the DB with the specified courseID. The user param gets added
+     * to the Course and the EntityManager merges the entities. The actual result is seen in the
+     * USERCOURSES table.
+     * 
+     * @param u User to be set to the Courses
+     * @param courseID Integer to find the Course by ID
+     */
+    public void setCourseUser(User u, int courseID) {
+        Course c = (Course)em.createNamedQuery("Courses.findByIdcourse").setParameter("idcourse", courseID).getSingleResult();
         c.getUsers().add(u);
         em.merge(c);
     }

@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <h:head>
         <title>JavaEE 7</title>
@@ -14,7 +15,7 @@
         <ui:composition template="./../../resources/basicTemplate.xhtml">
 
             <ui:define name="top">
-                <h1>Let's learn some JavaEE 7!</h1>
+                <h1>Let's learn some JavaEE 7 #{javaEE7Course.username}!</h1>
             </ui:define>
 
             <ui:define name="left">
@@ -37,27 +38,34 @@
             </ui:define>
 
             <ui:define name="content">
-                <p:media value="http://www.youtube.com/v/09rHDabBQfA" width="420" height="315" player="flash"/>
-                <p:accordionPanel>
-                    <p:tab title="Lec1">
-                        <h1>Testament - More Than Meets the Eye</h1>
-                        <h3>Youtube Embed iFrame</h3>
-                        <!--<p:media value="http://www.youtube.com/v/KZnUr8lcqjo" width="420" height="315" player="flash"/>-->
-                        <!--<p:media value="http://www.youtube.com/v/R0dogNWjqw8" width="420" height="315" player="flash"/>-->
-                        <!--https://www.youtube.com/watch?v=R0dogNWjqw8-->
-                        
-                        <iframe width="560" height="315" src="//www.youtube.com/embed/R0dogNWjqw8" frameborder="0"></iframe>
-                        <h3>Primefaces Flash</h3>
-                        <p:media value="http://www.youtube.com/v/09rHDabBQfA" width="420" height="315" player="flash"/>
-                        <!--https://www.youtube.com/watch?v=09rHDabBQfA-->
+                <p:accordionPanel id="lectures" value="#{javaEE7Course.courseLectures}" var="lec">
+                    <p:tab title="#{lec.title}">
+                        <h:panelGrid columns="2">
+                            <iframe width="560" height="315" src="//www.youtube.com/embed/#{lec.youtube}" frameborder="0"></iframe>
+                            <h:panelGrid>
+                                <h:form>
+                                    <p:commandButton value="Download Material" ajax="false" onclick="PrimeFaces.monitorDownload(start, stop);">
+                                        <p:fileDownload value="#{lec.material}"/>
+                                    </p:commandButton>
+                                </h:form>
+                                <script type="text/javascript">
+                                    function start() {
+                                        PF('statusDialog').show();
+                                    }
+
+                                    function stop() {
+                                        PF('statusDialog').hide();
+                                    }
+                                </script>
+                                <br/>
+                                
+                            </h:panelGrid>
+                        </h:panelGrid>
+
                     </p:tab>
-                    <p:tab title="Lec2">
-                    </p:tab>
-                    <p:tab title="Lec3"><h:outputText value="Hello"/></p:tab>
-                    <p:tab title="Lec4"><h:outputText value="Hello"/></p:tab>
-                    <p:tab title="Lec5"><h:outputText value="Hello"/></p:tab>
 
                 </p:accordionPanel>
+                <p:button value="Take Test"/>
             </ui:define>
 
         </ui:composition>

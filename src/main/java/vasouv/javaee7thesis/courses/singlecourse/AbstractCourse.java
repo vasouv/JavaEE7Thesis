@@ -8,7 +8,6 @@ package vasouv.javaee7thesis.courses.singlecourse;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
@@ -17,6 +16,7 @@ import vasouv.javaee7thesis.courses.sessionbeans.LectureFacade;
 import vasouv.javaee7thesis.login.AuthenticationEJB;
 
 /**
+ * Abstract class to hold same functionality among all Course Beans.
  *
  * @author vasouv
  */
@@ -24,7 +24,10 @@ import vasouv.javaee7thesis.login.AuthenticationEJB;
 @RequestScoped
 public class AbstractCourse implements Serializable {
     
+    //Username of the user
     String username;
+    
+    //Will search for this courseName in the DB
     String courseName;
     
     @EJB
@@ -39,6 +42,8 @@ public class AbstractCourse implements Serializable {
         courseName = "";
         courseLectures = new ArrayList();
     }
+    
+    // ----- GETTERS & SETTERS -----
 
     public String getUsername() {
         return username;

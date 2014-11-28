@@ -28,5 +28,5 @@ public class JavaEE7Course extends AbstractCourse implements Serializable {
         super();
         setCourseName("Learning Java EE 7");
     }
-
+    
 }

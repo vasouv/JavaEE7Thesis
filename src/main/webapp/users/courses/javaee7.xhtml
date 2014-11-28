@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <h:head>
         <title>JavaEE 7</title>
@@ -39,12 +40,32 @@
             <ui:define name="content">
                 <p:accordionPanel id="lectures" value="#{javaEE7Course.courseLectures}" var="lec">
                     <p:tab title="#{lec.title}">
-                        <!--<iframe width="560" height="315" src="//www.youtube.com/embed/R0dogNWjqw8" frameborder="0"></iframe>-->
-                        <h:outputText value="this is static, this isn't: #{lec.youtube}"/>
-                        <p:button value="#{lec.material}"/>
-                        <p:button value="Take Test"/>
+                        <h:panelGrid columns="2">
+                            <iframe width="560" height="315" src="//www.youtube.com/embed/#{lec.youtube}" frameborder="0"></iframe>
+                            <h:panelGrid>
+                                <h:form>
+                                    <p:commandButton value="Download Material" ajax="false" onclick="PrimeFaces.monitorDownload(start, stop);">
+                                        <p:fileDownload value="#{lec.material}"/>
+                                    </p:commandButton>
+                                </h:form>
+                                <script type="text/javascript">
+                                    function start() {
+                                        PF('statusDialog').show();
+                                    }
+
+                                    function stop() {
+                                        PF('statusDialog').hide();
+                                    }
+                                </script>
+                                <br/>
+                                
+                            </h:panelGrid>
+                        </h:panelGrid>
+
                     </p:tab>
+
                 </p:accordionPanel>
+                <p:button value="Take Test"/>
             </ui:define>
 
         </ui:composition>

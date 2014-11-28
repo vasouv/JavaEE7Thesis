@@ -39,8 +39,7 @@
             <ui:define name="content">
                 <p:accordionPanel id="lectures" value="#{netbeansCourse.courseLectures}" var="lec">
                     <p:tab title="#{lec.title}">
-                        <!--<iframe width="560" height="315" src="//www.youtube.com/embed/R0dogNWjqw8" frameborder="0"></iframe>-->
-                        <h:outputText value="this is static, this isn't: #{lec.youtube}"/>
+                        <iframe width="560" height="315" src="//www.youtube.com/embed/#{lec.youtube}" frameborder="0"></iframe>
                         <p:button value="#{lec.material}"/>
                         <p:button value="Take Test"/>
                     </p:tab>

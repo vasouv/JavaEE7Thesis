@@ -65,10 +65,7 @@ public class Course implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "courseid")
     private List<Lecture> lecturesList;
 
-    @JoinTable(name="USERCOURSES", 
-            joinColumns = { @JoinColumn(name = "COURSEID", referencedColumnName = "IDCOURSE") },
-            inverseJoinColumns = { @JoinColumn(name = "USERID", referencedColumnName = "ID") })
-    @ManyToMany
+    @ManyToMany(mappedBy = "courses")
     private List<User> users;
 
     public Course() {

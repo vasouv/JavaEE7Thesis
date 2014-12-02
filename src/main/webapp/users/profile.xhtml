@@ -7,27 +7,37 @@
       xmlns:p="http://primefaces.org/ui">
 
     <h:head>
-        
+        <title>Profile Page</title>
     </h:head>
     <h:body>
 
         <ui:composition template="./../resources/basicTemplate.xhtml">
 
             <ui:define name="top">
-                top
+                <h1>View your courses and change your credentials</h1>
             </ui:define>
 
             <ui:define name="left">
-                left
+                <p:button outcome="/index" value="Home Page" />
+                <br/>
+                <br/>
+                <p:button outcome="main" value="Users Main Area"/>
+                <br/>
+                <br/>
+                <h:form>
+                    <p:commandButton action="#{authenticationJSFBean.logout()}" value="Logout" />
+                </h:form>
             </ui:define>
 
             <ui:define name="right">
-                right
+                <p:button outcome="courseshowcart" value="Shopping Cart"/>
             </ui:define>
 
             <ui:define name="content">
-                <p:button outcome="courses/javaee7.xhtml" value="JavaEE 7"/>
-                <p:button outcome="courses/netbeans.xhtml" value="Netbeans"/>
+                <p:button outcome="courses/javaee7.xhtml" value="Java EE 7" rendered="#{profileController.javaee}"/>
+                <p:button outcome="courses/netbeans.xhtml" value="NetBeans 8" rendered="#{profileController.netbeans}"/>
+                <p:button outcome="courses/webservices.xhtml" value="Web Services" rendered="#{profileController.webservices}"/>
+                <p:button outcome="courses/java8.xhtml" value="Web Services" rendered="#{profileController.java8}"/>
             </ui:define>
 
         </ui:composition>

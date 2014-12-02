@@ -65,7 +65,10 @@ public class User implements Serializable {
     @Column(name = "EMAIL")
     private String email;
 
-    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "users")
+    @JoinTable(name = "USERCOURSES", joinColumns = {
+        @JoinColumn(name = "USERID", referencedColumnName = "ID")}, inverseJoinColumns = {
+        @JoinColumn(name = "COURSEID", referencedColumnName = "IDCOURSE")})
+    @ManyToMany
     private List<Course> courses;
 
     public User() {

@@ -67,4 +67,14 @@ public class CourseFacade extends AbstractFacade<Course> {
         em.merge(c);
     }
     
+    /**
+     * Finds the Courses for a specific User.
+     * 
+     * @param usro The User's username
+     * @return List of Courses
+     */
+    public List<Course> findCourseNamesByUser(String usro) {
+        return em.createQuery("select c from Course c inner join c.users us where us.username=:usr").setParameter("usr", usro).getResultList();
+    }
+    
 }

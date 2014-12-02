@@ -1,0 +1,74 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <h:head>
+        <title>Java 8</title>
+    </h:head>
+    
+    <h:body>
+
+        <ui:composition template="./../../resources/basicTemplate.xhtml">
+
+            <ui:define name="top">
+                <h1>Let's learn some Java 8 #{java8Course.username}!</h1>
+            </ui:define>
+
+            <ui:define name="left">
+                <p:button outcome="/index" value="Home Page" />
+                <br/>
+                <br/>
+                <p:button outcome="/users/main.xhtml" value="Users Main Area"/>
+                <br/>
+                <br/>
+                <h:form>
+                    <p:commandButton action="#{authenticationJSFBean.logout()}" value="Logout" />
+                </h:form>
+            </ui:define>
+
+            <ui:define name="right">
+                <p:button outcome="/users/profile.xhtml" value="Your Profile"/>
+                <br/>
+                <br/>
+                <p:button outcome="/users/courseshowcart.xhtml" value="Shopping Cart"/>
+            </ui:define>
+
+            <ui:define name="content">
+                <p:accordionPanel id="lectures" value="#{java8Course.courseLectures}" var="lec">
+                    <p:tab title="#{lec.title}">
+                        <h:panelGrid columns="2">
+                            <iframe width="560" height="315" src="//www.youtube.com/embed/#{lec.youtube}" frameborder="0"></iframe>
+                            <h:panelGrid>
+                                <h:form>
+                                    <p:commandButton value="Download Material" ajax="false" onclick="PrimeFaces.monitorDownload(start, stop);">
+                                        <p:fileDownload value="#{lec.material}"/>
+                                    </p:commandButton>
+                                </h:form>
+                                <script type="text/javascript">
+                                    function start() {
+                                        PF('statusDialog').show();
+                                    }
+
+                                    function stop() {
+                                        PF('statusDialog').hide();
+                                    }
+                                </script>
+                                <br/>
+
+                            </h:panelGrid>
+                        </h:panelGrid>
+
+                    </p:tab>
+
+                </p:accordionPanel>
+                <p:button value="Take Test"/>
+            </ui:define>
+
+        </ui:composition>
+
+    </h:body>
+</html>

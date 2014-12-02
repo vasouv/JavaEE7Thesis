@@ -17,16 +17,16 @@ import javax.inject.Named;
 @Named("javaEE7Course")
 @RequestScoped
 public class JavaEE7Course extends AbstractCourse implements Serializable {
-    
+
     @PostConstruct
     public void init() {
         username = auth.getUser().getUsername();
         courseLectures.addAll(lectureFacade.findLecturesByCourseName(courseName));
     }
-    
+
     public JavaEE7Course() {
         super();
         setCourseName("Learning Java EE 7");
     }
-    
+
 }

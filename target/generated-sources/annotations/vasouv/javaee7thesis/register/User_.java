@@ -6,7 +6,7 @@ import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 import vasouv.javaee7thesis.courses.Course;
 
-@Generated(value="EclipseLink-2.5.1.v20130918-rNA", date="2014-11-28T10:55:07")
+@Generated(value="EclipseLink-2.5.1.v20130918-rNA", date="2014-12-01T11:42:58")
 @StaticMetamodel(User.class)
 public class User_ { 
 

@@ -24,12 +24,12 @@ import vasouv.javaee7thesis.login.AuthenticationEJB;
 public class ProfileController {
 
     @EJB
-    CourseFacade courseFacade;
+    private CourseFacade courseFacade;
     
     @EJB
-    AuthenticationEJB auth;
+    private AuthenticationEJB auth;
     
-    List<Course> userCourses;
+    private List<Course> userCourses;
     
     //View properties for rendering of the buttons
     boolean javaee, netbeans, webservices, java8;

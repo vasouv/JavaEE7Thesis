@@ -107,7 +107,7 @@ public class AuthenticationController implements Serializable {
         FacesContext facesContext = FacesContext.getCurrentInstance();
         ExternalContext externalContext = facesContext.getExternalContext();
         externalContext.invalidateSession();
-        return "logout";
+        return "/logout.xhtml";
     }
 
     //GETTERS & SETTERS

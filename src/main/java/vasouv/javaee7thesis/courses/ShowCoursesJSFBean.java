@@ -26,17 +26,17 @@ import vasouv.javaee7thesis.shoppingcart.ShoppingCart;
 public class ShowCoursesJSFBean implements Serializable {
 
     @EJB
-    CourseFacade coursesFacade;
+    private CourseFacade coursesFacade;
     
     @EJB
-    LectureFacade lecturesFacade;
+    private LectureFacade lecturesFacade;
     
     //Injecting the CDI bean so we can add courses at will
     @Inject
-    ShoppingCart shoppingCart;
+    private ShoppingCart shoppingCart;
     
     //This list holds the data retrieved from the DB
-    List<Course> courses;
+    private List<Course> courses;
     
     @PostConstruct
     public void init() {

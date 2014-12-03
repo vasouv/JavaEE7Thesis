@@ -55,18 +55,12 @@ public class ProfileController {
      * the Course titles they're enrolled in, match the general Course titles available.
      */
     private void checkCourses() {
-        userCourses.stream().filter((c) -> (c.getTitle().equalsIgnoreCase("Learning Java EE 7"))).forEach((_item) -> {
-            javaee = true;
-        });
-        userCourses.stream().filter((c) -> (c.getTitle().equalsIgnoreCase("Developing Applications with NetBeans 8"))).forEach((_item) -> {
-            netbeans = true;
-        });
-        userCourses.stream().filter((c) -> (c.getTitle().equalsIgnoreCase("Web Services"))).forEach((_item) -> {
-            webservices = true;
-        });
-        userCourses.stream().filter((c) -> (c.getTitle().equalsIgnoreCase("Java8"))).forEach((_item) -> {
-            java8 = true;
-        });
+        for (Course c : userCourses) {
+            if (c.getTitle().equalsIgnoreCase("Learning Java EE 7")) javaee = true;
+            if (c.getTitle().equalsIgnoreCase("Developing Applications with NetBeans 8")) netbeans = true;
+            if (c.getTitle().equalsIgnoreCase("Web Services")) webservices = true;
+            if (c.getTitle().equalsIgnoreCase("Java8")) java8 = true;
+        }
     }
     
     // ----- GETTERS & SETTERS -----
@@ -102,6 +96,5 @@ public class ProfileController {
     public void setJava8(boolean java8) {
         this.java8 = java8;
     }
-    
-    
+
 }

@@ -16,6 +16,7 @@
             </ui:define>
 
             <ui:define name="left">
+
                 <p:button outcome="/index" value="Home Page" />
                 <br/>
                 <br/>
@@ -28,10 +29,11 @@
                 <h:form>
                     <p:commandButton action="#{authenticationJSFBean.logout()}" value="Logout" />
                 </h:form>
+
             </ui:define>
 
             <ui:define name="right">
-                <p:button outcome="admin/admin-main" value="Admin Section" />
+                <p:button outcome="admin/admin-main" value="Admin section" />
             </ui:define>
 
             <ui:define name="content">

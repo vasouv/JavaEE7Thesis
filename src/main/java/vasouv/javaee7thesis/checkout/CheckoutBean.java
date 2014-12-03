@@ -26,23 +26,23 @@ import vasouv.javaee7thesis.shoppingcart.ShoppingCart;
 public class CheckoutBean implements Serializable {
 
     @Inject
-    ShoppingCart shoppingCart;
+    private ShoppingCart shoppingCart;
     
     @EJB
-    CourseFacade courseFacade;
+    private CourseFacade courseFacade;
     
     @EJB
-    UserFacade userFacade;
+    private UserFacade userFacade;
     
     //Retrieves the logged in User's username
     @EJB
-    AuthenticationEJB auth;
+    private AuthenticationEJB auth;
     
     //Shows the username in the View
-    String username;
+    private String username;
     
     //Credit card number - simply a String
-    String creditCard;
+    private String creditCard;
     
     @PostConstruct
     public void init() {

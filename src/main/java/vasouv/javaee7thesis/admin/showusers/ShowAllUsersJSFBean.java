@@ -28,25 +28,25 @@ import vasouv.javaee7thesis.register.sessionbeans.UserFacade;
 public class ShowAllUsersJSFBean implements Serializable {
 
     @EJB
-    UserFacade userEJB;
+    private UserFacade userEJB;
     
     @EJB
-    GroupsFacade groupEJB;
+    private GroupsFacade groupEJB;
     
     //This List will hold the User elements from the DB, to be shown in the page
-    List<User> userList;
+    private List<User> userList;
     
     //Search variable for username, name and email
-    String searchBy;
+    private String searchBy;
     
     //Search term given by the user
-    String searchTerm;
+    private String searchTerm;
     
     //This User's account will be deleted
     private User selectedToDelete;
     
     //Queries the DB for the number of users - count()
-    int numberOfUsers;
+    private int numberOfUsers;
     
     /**
      * Sets data after the bean is created.

@@ -21,10 +21,10 @@ import vasouv.javaee7thesis.courses.Course;
 public class ShoppingCart implements Serializable {
 
     //Courses added to the shopping cart
-    List<Course> coursesToBuy;
+    private List<Course> coursesToBuy;
     
     //Course being removed from the cart
-    Course selectedToRemove;
+    private Course selectedToRemove;
     
     public ShoppingCart() {
         coursesToBuy = new ArrayList();

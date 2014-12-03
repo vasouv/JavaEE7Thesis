@@ -28,9 +28,9 @@ public class CreateUserJSFBean implements Serializable {
 
     //Injects the EJBs that will persist the User's credentials upon creation
     @EJB
-    UserFacade userEJB;
+    private UserFacade userEJB;
     @EJB
-    GroupsFacade groupEJB;
+    private GroupsFacade groupEJB;
 
     private User user;
     private Groups group;

@@ -30,17 +30,17 @@ public class CreateCourseJSFBean implements Serializable {
      */
 
     @EJB
-    CourseFacade courseFacade;
+    private CourseFacade courseFacade;
     
     @EJB
-    LectureFacade lectureFacade;
+    private LectureFacade lectureFacade;
     
     //Objects to hold values from the View
-    List<Lecture> lectures;
-    Course course;
+    private List<Lecture> lectures;
+    private Course course;
     
     //Active lecture ID for persistence
-    int lectureID;
+    private int lectureID;
     
     @PostConstruct
     public void init() {

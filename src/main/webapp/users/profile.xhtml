@@ -35,10 +35,18 @@
 
             <ui:define name="content">
                 <h2>Your purchased courses</h2>
-                <p:button outcome="courses/javaee7.xhtml" value="Java EE 7" rendered="#{profileController.javaee}"/>
-                <p:button outcome="courses/netbeans.xhtml" value="NetBeans 8" rendered="#{profileController.netbeans}"/>
-                <p:button outcome="courses/webservices.xhtml" value="Web Services" rendered="#{profileController.webservices}"/>
-                <p:button outcome="courses/java8.xhtml" value="Web Services" rendered="#{profileController.java8}"/>
+                <h:link outcome="courses/javaee7.xhtml" rendered="#{profileController.javaee}">
+                    <h:graphicImage library="courses" name="javaee7/javaee7pic.png" height="150" width="150"/>
+                </h:link>
+                <h:link outcome="courses/netbeans.xhtml" rendered="#{profileController.netbeans}">
+                    <h:graphicImage library="courses" name="netbeans/netbeans.png" height="150" width="150"/>
+                </h:link>
+                <h:link outcome="courses/webservices.xhtml" rendered="#{profileController.webservices}">
+                    <h:graphicImage library="courses" name="webservices/webservices.PNG" height="150" width="150"/>
+                </h:link>
+                <h:link outcome="courses/java8.xhtml" rendered="#{profileController.java8}">
+                    <h:graphicImage library="courses" name="java8/java8-logo.png" height="150" width="150"/>
+                </h:link>
             </ui:define>
 
         </ui:composition>

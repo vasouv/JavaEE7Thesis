@@ -64,10 +64,6 @@ public class ShowCoursesJSFBean implements Serializable {
         }
     }
     
-    /**
-     * TODO: I need a dynamic way to build the fieldsets.
-     */
-    
     // GETTERS & SETTERS
 
     public List<Course> getCourses() {

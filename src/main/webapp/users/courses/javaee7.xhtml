@@ -58,7 +58,7 @@
                                     }
                                 </script>
                                 <br/>
-                                
+
                             </h:panelGrid>
                         </h:panelGrid>
 
@@ -66,6 +66,12 @@
 
                 </p:accordionPanel>
                 <p:button value="Take Test"/>
+                <h:form>
+                    <p:commandButton value="Download Additional Material" ajax="false">
+                        <p:fileDownload value="#{javaEE7Course.file}" />
+                    </p:commandButton>
+                </h:form>
+
             </ui:define>
 
         </ui:composition>

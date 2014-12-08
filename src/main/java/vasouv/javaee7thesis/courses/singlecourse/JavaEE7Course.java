@@ -5,10 +5,19 @@
  */
 package vasouv.javaee7thesis.courses.singlecourse;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.io.Serializable;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Named;
+import javax.servlet.ServletContext;
+import org.primefaces.model.DefaultStreamedContent;
+import org.primefaces.model.StreamedContent;
 
 /**
  *
@@ -17,6 +26,8 @@ import javax.inject.Named;
 @Named("javaEE7Course")
 @RequestScoped
 public class JavaEE7Course extends AbstractCourse implements Serializable {
+
+    private StreamedContent file;
 
     @PostConstruct
     public void init() {
@@ -27,6 +38,16 @@ public class JavaEE7Course extends AbstractCourse implements Serializable {
     public JavaEE7Course() {
         super();
         setCourseName("Learning Java EE 7");
+        InputStream stream = ((ServletContext)FacesContext.getCurrentInstance().getExternalContext().getContext()).getResourceAsStream("/resources/courses/javaee7/javaee7material.zip");
+        file = new DefaultStreamedContent(stream, "application/zip", "javaee7material.zip");
+    }
+
+    public StreamedContent getFile() {
+        return file;
+    }
+
+    public void setFile(StreamedContent file) {
+        this.file = file;
     }
 
 }

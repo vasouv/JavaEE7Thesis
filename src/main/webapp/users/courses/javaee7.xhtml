@@ -65,8 +65,8 @@
                     </p:tab>
 
                 </p:accordionPanel>
-                <p:button value="Take Test"/>
                 <h:form>
+                    <h:commandButton value="Take Test" action="/users/courses/tests/javaee7test"/>
                     <p:commandButton value="Download Additional Material" ajax="false">
                         <p:fileDownload value="#{javaEE7Course.file}" />
                     </p:commandButton>

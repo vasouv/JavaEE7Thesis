@@ -41,7 +41,8 @@
 
             <ui:define name="content">
                 <h:form>
-                    <h:outputText id="json" value="#{jsonController.jsonDB}"/>
+                    <h:inputTextarea id="json" value="#{jsonController.jsonDB}"/>
+                    <!--<h:outputText id="json" value="#{jsonController.jsonDB}"/>-->
                     <h:commandButton id="writeJson" action="#{jsonController.buildMyJSON()}" value="Write JSON">
                         <f:ajax execute="@this" render="json"/>
                     </h:commandButton>

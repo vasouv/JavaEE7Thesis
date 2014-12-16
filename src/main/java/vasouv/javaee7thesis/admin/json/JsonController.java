@@ -7,7 +7,9 @@ package vasouv.javaee7thesis.admin.json;
 
 import java.io.IOException;
 import java.io.StringWriter;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import javax.ejb.EJB;
 import javax.inject.Named;
 import javax.enterprise.context.RequestScoped;
@@ -19,6 +21,8 @@ import javax.json.JsonObject;
 import javax.json.JsonObjectBuilder;
 import javax.json.JsonValue;
 import javax.json.JsonWriter;
+import javax.json.JsonWriterFactory;
+import javax.json.stream.JsonGenerator;
 import vasouv.javaee7thesis.courses.Course;
 import vasouv.javaee7thesis.courses.sessionbeans.CourseFacade;
 import vasouv.javaee7thesis.register.User;
@@ -43,50 +47,30 @@ public class JsonController {
     public JsonController() {
         jsonDB = "";
     }
-
+    
     public void buildMyJSON() {
         List<User> dbUsers = userFacade.findAllUsers();
 
-        JsonObjectBuilder builder = Json.createObjectBuilder();
-        StringBuilder json = new StringBuilder();
-        JsonObjectBuilder object = null;
-
         JsonArrayBuilder jab = Json.createArrayBuilder();
         
-        for (User u : dbUsers) {
-            jab.add(builder.add("name", u.getName()).add("email", u.getEmail()).build());
+        for(User u : dbUsers) {
+            JsonObjectBuilder job = Json.createObjectBuilder().add("name", u.getUsername());
+            jab.add(job);
         }
         
-        jab.build();
+        JsonObject jo = Json.createObjectBuilder().add("users", jab).build();
         
-        JsonObject finalBuild = Json.createObjectBuilder().add("Users", jab).build();
+        Map<String,String> config = new HashMap<>();
+        config.put(JsonGenerator.PRETTY_PRINTING, "");
+        JsonWriterFactory factory = Json.createWriterFactory(config);
         
         StringWriter stWriter = new StringWriter();
-        try (JsonWriter jsonWriter = Json.createWriter(stWriter)) {
-            jsonWriter.writeObject(finalBuild);
+//        try (JsonWriter jw = Json.createWriter(stWriter)) {
+        try (JsonWriter jw = factory.createWriter(stWriter)) {
+            jw.writeObject(jo);
         }
+        
         jsonDB = stWriter.toString();
-
-//        try (StringWriter sw = new StringWriter();) {
-//            for (User u : dbUsers) {
-//                builder.add("name", u.getName()).add("email", u.getEmail()).build();
-//                System.out.println(u.getName());
-//                builder.add("User", Json.createObjectBuilder()
-//                        .add("name", u.getName())
-//                        .add("username", u.getUsername()));
-//            }
-//
-//            JsonObject result = builder.build();
-//
-//            try (JsonWriter writer = Json.createWriter(sw)) {
-//                writer.writeObject(result);
-//            }
-//            json.append(sw.toString());
-//            jsonDB = json.toString();
-//
-//        } catch (IOException ex) {
-//            System.out.println(ex);
-//        }
     }
 
     public String getJsonDB() {

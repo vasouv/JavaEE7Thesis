@@ -40,9 +40,12 @@
             </ui:define>
 
             <ui:define name="content">
+                <p>
+                    Simple JSON demonstration. The backing bean shows a JSON array containing all the
+                    records in the Users table in the DB.
+                </p>
                 <h:form>
-                    <h:inputTextarea id="json" value="#{jsonController.jsonDB}"/>
-                    <!--<h:outputText id="json" value="#{jsonController.jsonDB}"/>-->
+                    <h:inputTextarea id="json" value="#{jsonController.jsonDB}"/><br/>
                     <h:commandButton id="writeJson" action="#{jsonController.buildMyJSON()}" value="Write JSON">
                         <f:ajax execute="@this" render="json"/>
                     </h:commandButton>

@@ -22,6 +22,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 import vasouv.javaee7thesis.register.User;
 
 /**
@@ -36,6 +38,7 @@ import vasouv.javaee7thesis.register.User;
     @NamedQuery(name = "Courses.findByTitle", query = "SELECT c FROM Course c WHERE c.title = :title"),
     @NamedQuery(name = "Courses.findByPrice", query = "SELECT c FROM Course c WHERE c.price = :price"),
     @NamedQuery(name = "Courses.findByImage", query = "SELECT c FROM Course c WHERE c.image = :image")})
+@XmlRootElement
 public class Course implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -122,6 +125,7 @@ public class Course implements Serializable {
         this.image = image;
     }
 
+    @XmlTransient
     public List<Lecture> getLecturesList() {
         return lecturesList;
     }
@@ -130,6 +134,7 @@ public class Course implements Serializable {
         this.lecturesList = lecturesList;
     }
 
+    @XmlTransient
     public List<User> getUsers() {
         return users;
     }

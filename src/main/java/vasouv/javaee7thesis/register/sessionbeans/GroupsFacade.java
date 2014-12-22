@@ -58,6 +58,10 @@ public class GroupsFacade extends AbstractFacade<Groups> {
         int delCount = em.createQuery("delete from Groups g where g.username = :del")
                 .setParameter("del", us.getUsername()).executeUpdate();
     }
+    
+    public Groups findGroupByUsername(User us) {
+        return (Groups)em.createQuery("select g from Groups g where g.username = :name").setParameter("name", us.getUsername()).getSingleResult();
+    }
 
     @Override
     protected EntityManager getEntityManager() {

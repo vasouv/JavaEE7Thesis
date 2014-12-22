@@ -13,7 +13,9 @@ import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import vasouv.javaee7thesis.register.Groups;
 import vasouv.javaee7thesis.register.User;
+import vasouv.javaee7thesis.register.sessionbeans.GroupsFacade;
 
 /**
  * 
@@ -26,6 +28,9 @@ public class AuthenticationController implements Serializable {
     //The EJB that will try to authenticate with given credentials
     @EJB
     private AuthenticationEJB authenticationFacade;
+    
+    @EJB
+    private GroupsFacade groupsFacade;
     
     //Given username
     private String username;
@@ -72,6 +77,8 @@ public class AuthenticationController implements Serializable {
      */
     public String login() {
         
+        String pageToNavigate;
+        
         //Passes the JSF User to the EJB
         authenticationFacade.setUser(getUser());
         
@@ -83,8 +90,19 @@ public class AuthenticationController implements Serializable {
             this.authenticated = true;
 
             setUser(authenticationFacade.getUser());
+            
+            //Group of the specified username
+            Groups gr = groupsFacade.findGroupByUsername(authenticationFacade.getUser());
+            
+            //Changes the pageToNavigate according to the groupname
+            if(gr.getGroupname().equalsIgnoreCase("user")) {
+                pageToNavigate = "users/main.xhtml";
+            }
+            else {
+                pageToNavigate = "admin/admin-main.xhtml";
+            }
 
-            return "users/main.xhtml";
+            return pageToNavigate;
         } else {
             this.authenticated = false;
             setUser(null);

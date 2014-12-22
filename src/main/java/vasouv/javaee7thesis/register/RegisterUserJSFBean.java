@@ -4,6 +4,7 @@ import java.io.Serializable;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
+import javax.validation.constraints.Pattern;
 import vasouv.javaee7thesis.register.sessionbeans.GroupsFacade;
 import vasouv.javaee7thesis.register.sessionbeans.UserFacade;
 
@@ -28,6 +29,9 @@ public class RegisterUserJSFBean implements Serializable {
     private String username;
     private String password;
     private String name;
+    
+    //Validation pattern taken from Josh Juneau's JavaEE 7 Recipes, ch. 5-4, Solution 2
+    @Pattern(regexp = "[a-zA-Z0-9]+@[a-zA-Z0-9]+\\.[a-zA-Z0-9]+", message = "Email format is invalid. Must be sample@mail.com")
     private String email;
 
     public RegisterUserJSFBean() {

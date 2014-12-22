@@ -14,7 +14,7 @@ import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import vasouv.javaee7thesis.courses.sessionbeans.CourseFacade;
-import vasouv.javaee7thesis.courses.sessionbeans.LectureFacade;
+import vasouv.javaee7thesis.login.AuthenticationEJB;
 import vasouv.javaee7thesis.shoppingcart.ShoppingCart;
 
 /**
@@ -29,7 +29,7 @@ public class ShowCoursesJSFBean implements Serializable {
     private CourseFacade coursesFacade;
     
     @EJB
-    private LectureFacade lecturesFacade;
+    private AuthenticationEJB auth;
     
     //Injecting the CDI bean so we can add courses at will
     @Inject
@@ -38,14 +38,22 @@ public class ShowCoursesJSFBean implements Serializable {
     //This list holds the data retrieved from the DB
     private List<Course> courses;
     
+    //Disables the Buy button if the user has already bought the course
+    private boolean hasBoughtJavaEE, hasBoughtNetbeans, hasBoughtWebServices, hasBoughtJava8;
+    
     @PostConstruct
     public void init() {
         //Calls the Courses EJB and adds the findAll List to the courses List
         courses.addAll(coursesFacade.findAll());
+        handleBuyButton();
     }
     
     public ShowCoursesJSFBean() {
         this.courses = new ArrayList();
+        hasBoughtJava8 = false;
+        hasBoughtJavaEE = false;
+        hasBoughtNetbeans = false;
+        hasBoughtWebServices = false;
     }
     
     /**
@@ -61,6 +69,22 @@ public class ShowCoursesJSFBean implements Serializable {
             case "1": shoppingCart.addCourse(courses.get(1)); break;
             case "2": shoppingCart.addCourse(courses.get(2)); break;
             case "3": shoppingCart.addCourse(courses.get(3)); break;
+        }
+    }
+    
+    /**
+     * Handles the disabled attribute of the Buy button.
+     * 
+     * If a user has already bought some courses, the Buy button is disabled for those courses.
+     */
+    private void handleBuyButton() {
+        List<Course> userHasBoughtCourses = coursesFacade.findCourseNamesByUser(auth.getUser().getUsername());
+        
+        for (Course c : userHasBoughtCourses) {
+            if (c.getTitle().equalsIgnoreCase("Learning Java EE 7")) hasBoughtJavaEE = true;
+            if (c.getTitle().equalsIgnoreCase("Developing Applications with NetBeans 8")) hasBoughtNetbeans = true;
+            if (c.getTitle().equalsIgnoreCase("Web Services")) hasBoughtWebServices = true;
+            if (c.getTitle().equalsIgnoreCase("Java8")) hasBoughtJava8 = true;
         }
     }
     
@@ -80,6 +104,38 @@ public class ShowCoursesJSFBean implements Serializable {
 
     public void setShoppingCart(ShoppingCart shoppingCart) {
         this.shoppingCart = shoppingCart;
+    }
+
+    public boolean isHasBoughtJavaEE() {
+        return hasBoughtJavaEE;
+    }
+
+    public void setHasBoughtJavaEE(boolean hasBoughtJavaEE) {
+        this.hasBoughtJavaEE = hasBoughtJavaEE;
+    }
+
+    public boolean isHasBoughtNetbeans() {
+        return hasBoughtNetbeans;
+    }
+
+    public void setHasBoughtNetbeans(boolean hasBoughtNetbeans) {
+        this.hasBoughtNetbeans = hasBoughtNetbeans;
+    }
+
+    public boolean isHasBoughtWebServices() {
+        return hasBoughtWebServices;
+    }
+
+    public void setHasBoughtWebServices(boolean hasBoughtWebServices) {
+        this.hasBoughtWebServices = hasBoughtWebServices;
+    }
+
+    public boolean isHasBoughtJava8() {
+        return hasBoughtJava8;
+    }
+
+    public void setHasBoughtJava8(boolean hasBoughtJava8) {
+        this.hasBoughtJava8 = hasBoughtJava8;
     }
 
 }

@@ -32,7 +32,7 @@ public class ProfileController {
     private List<Course> userCourses;
     
     //View properties for rendering of the buttons
-    boolean javaee, netbeans, webservices, java8;
+    private boolean javaee, netbeans, webservices, java8;
     
     @PostConstruct
     public void init() {

@@ -34,19 +34,21 @@
             </ui:define>
 
             <ui:define name="content">
-                <h2>Your purchased courses</h2>
-                <h:link outcome="courses/javaee7.xhtml" rendered="#{profileController.javaee}">
-                    <h:graphicImage library="courses" name="javaee7/javaee7pic.png" height="150" width="150"/>
-                </h:link>
-                <h:link outcome="courses/netbeans.xhtml" rendered="#{profileController.netbeans}">
-                    <h:graphicImage library="courses" name="netbeans/netbeans.png" height="150" width="150"/>
-                </h:link>
-                <h:link outcome="courses/webservices.xhtml" rendered="#{profileController.webservices}">
-                    <h:graphicImage library="courses" name="webservices/webservices.PNG" height="150" width="150"/>
-                </h:link>
-                <h:link outcome="courses/java8.xhtml" rendered="#{profileController.java8}">
-                    <h:graphicImage library="courses" name="java8/java8-logo.png" height="150" width="150"/>
-                </h:link>
+                <p:fieldset legend="Your Purchased Courses" toggleable="true" toggleSpeed="500" style="margin-bottom:20px">
+                    <h:link outcome="courses/javaee7.xhtml" rendered="#{profileController.javaee}">
+                        <h:graphicImage library="courses" name="javaee7/javaee7pic.png" height="150" width="150"/>
+                    </h:link>
+                    <h:link outcome="courses/netbeans.xhtml" rendered="#{profileController.netbeans}">
+                        <h:graphicImage library="courses" name="netbeans/netbeans.png" height="150" width="150"/>
+                    </h:link>
+                    <h:link outcome="courses/webservices.xhtml" rendered="#{profileController.webservices}">
+                        <h:graphicImage library="courses" name="webservices/webservices.PNG" height="150" width="150"/>
+                    </h:link>
+                    <h:link outcome="courses/java8.xhtml" rendered="#{profileController.java8}">
+                        <h:graphicImage library="courses" name="java8/java8-logo.png" height="150" width="150"/>
+                    </h:link>
+                </p:fieldset>
+
             </ui:define>
 
         </ui:composition>

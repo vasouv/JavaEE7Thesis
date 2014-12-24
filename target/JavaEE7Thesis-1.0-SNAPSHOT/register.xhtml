@@ -16,7 +16,20 @@
             </ui:define>
 
             <ui:define name="left">
-                <p:button outcome="/index" value="To Home Page" />
+                <h:form>
+                    <p:menu style="width: 140px">
+                        <p:submenu label="Navigation">
+                            <p:menuitem value="Home Page" outcome="/index"/>
+                        </p:submenu>
+                        <p:submenu label="Account">
+                            <p:menuitem value="New Account" outcome="/register"/>
+                            <p:menuitem value="Login" outcome="/login"/>
+                        </p:submenu>
+                        <p:submenu label="Admin">
+                            <p:menuitem value="Admin" outcome="/admin/admin-main"/>
+                        </p:submenu>
+                    </p:menu>
+                </h:form>
             </ui:define>
 
             <ui:define name="right">

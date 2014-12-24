@@ -18,17 +18,28 @@
             </ui:define>
 
             <ui:define name="left">
-                <p:button outcome="/index" value="Home Page"/>
-                <br/>
-                <br/>
-                <p:button outcome="admin-showusers" value="Show Users"/>
-                <br/>
-                <br/>
-                <p:button outcome="admin-createuser" value="Create User"/>
-                <br/>
-                <br/>
                 <h:form>
-                    <p:commandButton action="#{authenticationJSFBean.logout()}" value="Logout" />
+                    <p:menu style="width: 140px">
+                        <p:submenu label="Navigation">
+                            <p:menuitem value="Home Page" outcome="/index"/>
+                            <p:menuitem value="Users Main Area" outcome="/users/main"/>
+                        </p:submenu>
+                        <p:submenu label="Administration">
+                            <p:menuitem value="Admin Main" outcome="/admin/admin-main"/>
+                            <p:menuitem value="Show Users" outcome="/admin/admin-showusers"/>
+                            <p:menuitem value="Create User" outcome="/admin/admin-createuser"/>
+                            <p:menuitem value="Create Course" outcome="/admin/admin-createcourse"/>
+                            <p:menuitem value="JSON" outcome="/admin/admin-json"/>
+                        </p:submenu>
+                        <p:submenu label="Account">
+                            <p:menuitem value="My Profile" outcome="/users/profile"/>
+                            <p:menuitem value="Shopping Cart" outcome="/users/courseshowcart"/>
+                            <p:menuitem value="Logout" action="#{authenticationJSFBean.logout()}" ajax="false"/>
+                        </p:submenu>
+                        <p:submenu label="Contact">
+                            <p:menuitem value="Contact" outcome="/contact"/>
+                        </p:submenu>
+                    </p:menu>
                 </h:form>
             </ui:define>
 

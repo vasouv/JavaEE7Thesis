@@ -1,12 +1,68 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+
     <h:head>
-        <title>Facelet Title</title>
+        <title>Web Services</title>
     </h:head>
+
     <h:body>
-        Hello from Facelets
+
+        <ui:composition template="./../../resources/basicTemplate.xhtml">
+
+            <ui:define name="top">
+                <h1>Let's learn some Web Services #{webServicesCourse.username}!</h1>
+            </ui:define>
+
+            <ui:define name="left">
+                <h:form>
+                    <p:menu style="width: 140px">
+                        <p:submenu label="Navigation">
+                            <p:menuitem value="Home Page" outcome="/index"/>
+                            <p:menuitem value="Users Main Area" outcome="/users/main"/>
+                        </p:submenu>
+                        <p:submenu label="Account">
+                            <p:menuitem value="My Profile" outcome="/users/profile"/>
+                            <p:menuitem value="Shopping Cart" outcome="/users/courseshowcart"/>
+                            <p:menuitem value="Logout" action="#{authenticationJSFBean.logout()}" ajax="false"/>
+                        </p:submenu>
+                        <p:submenu label="Contact">
+                            <p:menuitem value="Contact" outcome="/contact"/>
+                        </p:submenu>
+                        <p:submenu label="Admin">
+                            <p:menuitem value="Admin" outcome="/admin/admin-main"/>
+                        </p:submenu>
+                    </p:menu>
+                </h:form>
+
+            </ui:define>
+
+            <ui:define name="right">
+                <p:button outcome="/users/profile.xhtml" value="Your Profile"/>
+                <br/>
+                <br/>
+                <p:button outcome="/users/courseshowcart.xhtml" value="Shopping Cart"/>
+            </ui:define>
+
+            <ui:define name="content">
+                <p:accordionPanel id="lectures" value="#{webServicesCourse.courseLectures}" var="lec">
+                    <p:tab title="#{lec.title}">
+                        <iframe width="800" height="600" src="//www.youtube.com/embed/#{lec.youtube}" frameborder="0"></iframe>
+                    </p:tab>
+                </p:accordionPanel>
+                <h:form>
+                    <p:commandButton value="Download Additional Material" ajax="false">
+                        <p:fileDownload value="#{webServicesCourse.file}" />
+                    </p:commandButton>
+                </h:form>
+
+            </ui:define>
+
+        </ui:composition>
+
     </h:body>
 </html>
-

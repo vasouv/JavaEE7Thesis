@@ -50,11 +50,14 @@
             <ui:define name="content">
                 <p:accordionPanel id="lectures" value="#{netbeansCourse.courseLectures}" var="lec">
                     <p:tab title="#{lec.title}">
-                        <iframe width="560" height="315" src="//www.youtube.com/embed/#{lec.youtube}" frameborder="0"></iframe>
-                        <p:button value="#{lec.material}"/>
-                        <p:button value="Take Test"/>
+                        <iframe width="800" height="600" src="//www.youtube.com/embed/#{lec.youtube}" frameborder="0"></iframe>
                     </p:tab>
                 </p:accordionPanel>
+                <h:form>
+                    <p:commandButton value="Download Additional Material" ajax="false">
+                        <p:fileDownload value="#{netbeansCourse.file}"/>
+                    </p:commandButton>
+                </h:form>
             </ui:define>
 
         </ui:composition>

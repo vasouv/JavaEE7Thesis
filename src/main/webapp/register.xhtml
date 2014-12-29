@@ -37,6 +37,9 @@
             </ui:define>
 
             <ui:define name="content">
+                <p>The <strong>username</strong> and <strong>password</strong> fields do not accept 
+                    duplicate entries. Currently, only the username checks if there's the same value
+                    in the DB. Ideally, the username and email should check for duplicates. Oh well...</p>
                 <h:form id="registerform">
                     <p:panelGrid columns="2">
                         <f:facet name="header">Enter your credentials</f:facet>
@@ -54,7 +57,7 @@
                         </f:facet>
                     </p:panelGrid>
                 </h:form>
-                <p:messages style="color:red" />
+                <p:messages id="errormessages" style="color:red" />
             </ui:define>
 
         </ui:composition>

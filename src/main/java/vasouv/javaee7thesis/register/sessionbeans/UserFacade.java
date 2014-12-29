@@ -163,6 +163,19 @@ public class UserFacade extends AbstractFacade<User> {
         return (User)em.createQuery("select u from User u where u.username = :us").setParameter("us", user).getSingleResult();
     }
     
+    /**
+     * Checks if given username exists in the DB.
+     * 
+     * @param usern username to be queried.
+     * @return true if exist==1, meaning there's a record in the DB.
+     */
+    public boolean usernameExists(String usern) {
+        String query = "select count(*) from Users where username='" + usern + "'";
+        int exist = (int)em.createNativeQuery(query).getSingleResult();
+        
+        return exist != 0;
+    }
+    
     @Override
     protected EntityManager getEntityManager() {
         return em;

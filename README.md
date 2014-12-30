@@ -23,6 +23,9 @@ The project obviously doesn't meet any quality standards and isn't up to par wit
 7. Build the project so it downloads all Maven dependencies.
 8. Deploy and have fun!
 
+##Demo##
+reserved for video demo
+
 ##Problems##
 So far, I haven't noticed any problems with my mentioned set up. I have successfully deployed the project on another computer and it works. If you run into any issues, tough luck, I don't know how to fix it. If you know how to fix it though, please see Contributing.
 
@@ -30,6 +33,6 @@ So far, I haven't noticed any problems with my mentioned set up. I have successf
 Any suggestions regarding the code or my methodology, are more than welcome. Also, if there are better options on how to distribute and test my project on other computers, I'd be glad to hear them.
 
 ##License##
-This is my own work. If I use someone else's code as-is either for temporary or permanent use, I will explicitly say so. Likewise if you use my code, you are required to mention me as the source.
+This is my own work. If I use someone else's code as-is or edited, either for temporary or permanent use, I will explicitly mention it in the source code. Likewise if you use my code, you are required to mention me as the source.
 
 Glassfish license can be found [here](https://glassfish.java.net/license.html). I have not modified the server's source code in any way. My pre-configured version simply has a JDBC realm and connection pools, I'm distributing my version simply for ease of use.

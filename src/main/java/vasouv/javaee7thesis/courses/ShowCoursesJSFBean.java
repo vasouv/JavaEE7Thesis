@@ -11,6 +11,8 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 import vasouv.javaee7thesis.courses.sessionbeans.CourseFacade;
@@ -65,11 +67,21 @@ public class ShowCoursesJSFBean implements Serializable {
      */
     public void addToShoppingCart(String c) {
         switch (c) {
-            case "0": shoppingCart.addCourse(courses.get(0)); break;
-            case "1": shoppingCart.addCourse(courses.get(1)); break;
-            case "2": shoppingCart.addCourse(courses.get(2)); break;
-            case "3": shoppingCart.addCourse(courses.get(3)); break;
+            case "0": shoppingCart.addCourse(courses.get(0)); showAddedCourse(courses.get(0).getTitle()); break;
+            case "1": shoppingCart.addCourse(courses.get(1)); showAddedCourse(courses.get(1).getTitle()); break;
+            case "2": shoppingCart.addCourse(courses.get(2)); showAddedCourse(courses.get(2).getTitle()); break;
+            case "3": shoppingCart.addCourse(courses.get(3)); showAddedCourse(courses.get(3).getTitle()); break;
         }
+    }
+    
+    /**
+     * Displays a message when a course is added to the shopping cart.
+     * 
+     * @param courseName 
+     */
+    private void showAddedCourse(String courseName) {
+        FacesContext context = FacesContext.getCurrentInstance();
+        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, "Course Added", courseName));
     }
     
     /**

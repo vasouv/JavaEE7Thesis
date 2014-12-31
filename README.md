@@ -15,13 +15,15 @@ The project obviously doesn't meet any quality standards and isn't up to par wit
 
 ##How to set up the project##
 1. Default installation for all mentioned software.
-2. Download and unzip my pre-configured Glassfish version and place it in C:
-3. Download and unzip my database in C:\Users\user\netbeans-derby
+2. [Download](https://dl.dropboxusercontent.com/u/5212783/thesis_db_server/glassfish4.zip) and unzip my pre-configured Glassfish version and place it in C:
+3. [Download](https://dl.dropboxusercontent.com/u/5212783/thesis_db_server/jdbcrealm.zip) and unzip my database in C:\Users\user\netbeans-derby
 4. Download a copy of this project and unzip it in NetbeansProjects.
 5. Make sure that Netbeans has properly registered Glassfish and JavaDB in the Services window.
 6. Start Glassfish. If JavaDB asks for username and password, it's 'thesis' and '1234' respectively.
 7. Build the project so it downloads all Maven dependencies.
 8. Deploy and have fun!
+
+(You could probably just deploy the [war](https://dl.dropboxusercontent.com/u/5212783/thesis_db_server/JavaEE7Thesis-1.0-SNAPSHOT.war) in Glassfish and it should work, without having to go through Netbeans. My database is still needed though)
 
 ##Demo##
 reserved for video demo
@@ -35,4 +37,4 @@ Any suggestions regarding the code or my methodology, are more than welcome. Als
 ##License##
 This is my own work. If I use someone else's code as-is or edited, either for temporary or permanent use, I will explicitly mention it in the source code. Likewise if you use my code, you are required to mention me as the source.
 
-Glassfish license can be found [here](https://glassfish.java.net/license.html). I have not modified the server's source code in any way. My pre-configured version simply has a JDBC realm and connection pools, I'm distributing my version simply for ease of use.
+Glassfish license can be found [here](https://glassfish.java.net/license.html). I have not modified the server's source code in any way. My pre-configured version simply has a JDBC realm and connection pools, I'm distributing my version just for ease of use.

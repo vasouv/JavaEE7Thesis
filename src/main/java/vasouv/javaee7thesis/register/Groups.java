@@ -1,9 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package vasouv.javaee7thesis.register;
 
 import java.io.Serializable;
@@ -11,8 +5,6 @@ import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -23,10 +15,6 @@ import javax.validation.constraints.Size;
  */
 @Entity
 @Table(name = "GROUPS")
-//@NamedQueries({
-//    @NamedQuery(name = "Groups.findAll", query = "SELECT g FROM Groups g"),
-//    @NamedQuery(name = "Groups.findByUsername", query = "SELECT g FROM Groups g WHERE g.username = :username"),
-//    @NamedQuery(name = "Groups.findByGroupname", query = "SELECT g FROM Groups g WHERE g.groupname = :groupname")})
 public class Groups implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id

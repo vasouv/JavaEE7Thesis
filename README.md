@@ -26,7 +26,7 @@ The project obviously doesn't meet any quality standards and isn't up to par wit
 (You could probably just deploy the [war](https://dl.dropboxusercontent.com/u/5212783/thesis_db_server/JavaEE7Thesis-1.0-SNAPSHOT.war) in Glassfish and it should work, without having to go through Netbeans. My database is still needed though)
 
 ##Demo##
-reserved for video demo
+http://youtu.be/dpaJujhSCMk
 
 ##Problems##
 So far, I haven't noticed any problems with my mentioned set up. I have successfully deployed the project on another computer and it works. If you run into any issues, tough luck, I don't know how to fix it. If you know how to fix it though, please see Contributing.

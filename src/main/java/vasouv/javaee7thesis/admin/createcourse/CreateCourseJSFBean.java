@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package vasouv.javaee7thesis.admin.createcourse;
 
 import java.io.Serializable;
@@ -25,10 +20,6 @@ import vasouv.javaee7thesis.courses.sessionbeans.LectureFacade;
 @Named("createCourseJSFBean")
 public class CreateCourseJSFBean implements Serializable {
     
-    /**
-     * TODO: I need a dynamic tabview to create courses.
-     */
-
     @EJB
     private CourseFacade courseFacade;
     
@@ -135,6 +126,5 @@ public class CreateCourseJSFBean implements Serializable {
     public void setCourse(Course course) {
         this.course = course;
     }
-    
 
 }

@@ -72,10 +72,11 @@ public class CheckoutBean implements Serializable {
         
         //For every course in the cart, calls the method to persist the users
         //Uses Java8 streams and Lambdas
-        shoppingCart.getCoursesToBuy().stream().forEach((co1) -> {
-            courseFacade.setCourseUser(use, co1.getIdcourse());
+        shoppingCart.getCoursesToBuy().stream().forEach((selectedCourse) -> {
+//            courseFacade.setCourseUser(use, co1.getIdcourse());
+	    userFacade.setUserCourse(use, selectedCourse);
         });
-        
+	
     }
     
     /**

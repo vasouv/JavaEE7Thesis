@@ -16,6 +16,7 @@ import javax.annotation.security.RolesAllowed;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import vasouv.javaee7thesis.courses.Course;
 import vasouv.javaee7thesis.passwordhashing.PasswordHasher;
 import vasouv.javaee7thesis.register.User;
 
@@ -159,6 +160,22 @@ public class UserFacade extends AbstractFacade<User> {
     
     public User findByUsernameSingle(String user) {
         return (User)em.createQuery("select u from User u where u.username = :us").setParameter("us", user).getSingleResult();
+    }
+    
+    /**
+     * Sets the relationship between Users and Courses.
+     * 
+     * A user is retrieved from the DB with the helper method. The course param gets added
+     * to the User and the EntityManager merges the entities. The actual result is seen in the
+     * USERCOURSES table.
+     * 
+     * @param u Current logged in User
+     * @param c Course to be added
+     */
+    public void setUserCourse(User u, Course c) {
+	User us = findByUsernameSingle(u.getUsername());
+	us.getCourses().add(c);
+	em.merge(us);
     }
     
     /**

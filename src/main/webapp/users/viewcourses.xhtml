@@ -95,7 +95,7 @@
                                         <h:panelGrid columns="2">
                                             <h:outputText value="#{showCoursesJSFBean.courses[1].price == 0 ? 'Free' : showCoursesJSFBean.courses[1].price += '$'}"/>
                                             <br/>
-                                            <p:commandButton action="#{showCoursesJSFBean.addToShoppingCart('1')}" value="Buy" disabled="#{showCoursesJSFBean.hasBoughtNetbeans}"/>
+                                            <p:commandButton action="#{showCoursesJSFBean.addToShoppingCart('1')}" value="Buy" disabled="#{showCoursesJSFBean.hasBoughtNetbeans}" update="addCourseGrowl"/>
                                         </h:panelGrid>
                                     </p:column>
                                 </p:row>
@@ -124,7 +124,7 @@
                                         <h:panelGrid columns="2">
                                             <h:outputText value="#{showCoursesJSFBean.courses[2].price == 0 ? 'Free' : showCoursesJSFBean.courses[2].price += '$'}"/>
                                             <br/>
-                                            <p:commandButton action="#{showCoursesJSFBean.addToShoppingCart('2')}" value="Buy" disabled="#{showCoursesJSFBean.hasBoughtWebServices}"/>
+                                            <p:commandButton action="#{showCoursesJSFBean.addToShoppingCart('2')}" value="Buy" disabled="#{showCoursesJSFBean.hasBoughtWebServices}" update="addCourseGrowl"/>
                                         </h:panelGrid>
                                     </p:column>
                                 </p:row>
@@ -153,7 +153,7 @@
                                         <h:panelGrid columns="2">
                                             <h:outputText value="#{showCoursesJSFBean.courses[3].price == 0 ? 'Free' : showCoursesJSFBean.courses[2].price += '$'}"/>
                                             <br/>
-                                            <p:commandButton action="#{showCoursesJSFBean.addToShoppingCart('3')}" value="Buy" disabled="#{showCoursesJSFBean.hasBoughtJava8}"/>
+                                            <p:commandButton action="#{showCoursesJSFBean.addToShoppingCart('3')}" value="Buy" disabled="#{showCoursesJSFBean.hasBoughtJava8}" update="addCourseGrowl"/>
                                         </h:panelGrid>
                                     </p:column>
                                 </p:row>

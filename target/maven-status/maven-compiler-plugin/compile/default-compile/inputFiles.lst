@@ -1,7 +1,6 @@
 C:\Users\vasouv\Documents\NetBeansProjects\JavaEE7Thesis\src\main\java\vasouv\javaee7thesis\register\Groups.java
 C:\Users\vasouv\Documents\NetBeansProjects\JavaEE7Thesis\src\main\java\vasouv\javaee7thesis\checkout\CheckoutBean.java
 C:\Users\vasouv\Documents\NetBeansProjects\JavaEE7Thesis\src\main\java\vasouv\javaee7thesis\login\AuthenticationEJB.java
-C:\Users\vasouv\Documents\NetBeansProjects\JavaEE7Thesis\src\main\java\vasouv\javaee7thesis\admin\createcourse\Tab.java
 C:\Users\vasouv\Documents\NetBeansProjects\JavaEE7Thesis\src\main\java\vasouv\javaee7thesis\admin\showusers\ShowAllUsersJSFBean.java
 C:\Users\vasouv\Documents\NetBeansProjects\JavaEE7Thesis\src\main\java\vasouv\javaee7thesis\admin\json\JsonController.java
 C:\Users\vasouv\Documents\NetBeansProjects\JavaEE7Thesis\src\main\java\vasouv\javaee7thesis\shoppingcart\ShoppingCart.java
@@ -11,7 +10,6 @@ C:\Users\vasouv\Documents\NetBeansProjects\JavaEE7Thesis\src\main\java\vasouv\ja
 C:\Users\vasouv\Documents\NetBeansProjects\JavaEE7Thesis\src\main\java\vasouv\javaee7thesis\register\User.java
 C:\Users\vasouv\Documents\NetBeansProjects\JavaEE7Thesis\src\main\java\vasouv\javaee7thesis\rest\CourseFacadeREST.java
 C:\Users\vasouv\Documents\NetBeansProjects\JavaEE7Thesis\src\main\java\vasouv\javaee7thesis\admin\createuser\CreateUserJSFBean.java
-C:\Users\vasouv\Documents\NetBeansProjects\JavaEE7Thesis\src\main\java\vasouv\javaee7thesis\login\LogoutBean.java
 C:\Users\vasouv\Documents\NetBeansProjects\JavaEE7Thesis\src\main\java\vasouv\javaee7thesis\rest\ApplicationConfig.java
 C:\Users\vasouv\Documents\NetBeansProjects\JavaEE7Thesis\src\main\java\vasouv\javaee7thesis\register\sessionbeans\UserFacade.java
 C:\Users\vasouv\Documents\NetBeansProjects\JavaEE7Thesis\src\main\java\vasouv\javaee7thesis\rest\AbstractFacade.java
@@ -26,7 +24,6 @@ C:\Users\vasouv\Documents\NetBeansProjects\JavaEE7Thesis\src\main\java\vasouv\ja
 C:\Users\vasouv\Documents\NetBeansProjects\JavaEE7Thesis\src\main\java\vasouv\javaee7thesis\courses\sessionbeans\LectureFacade.java
 C:\Users\vasouv\Documents\NetBeansProjects\JavaEE7Thesis\src\main\java\vasouv\javaee7thesis\register\sessionbeans\AbstractFacade.java
 C:\Users\vasouv\Documents\NetBeansProjects\JavaEE7Thesis\src\main\java\vasouv\javaee7thesis\courses\singlecourse\AbstractCourse.java
-C:\Users\vasouv\Documents\NetBeansProjects\JavaEE7Thesis\src\main\java\vasouv\javaee7thesis\courses\dynamicfieldset\DBFieldset.java
 C:\Users\vasouv\Documents\NetBeansProjects\JavaEE7Thesis\src\main\java\vasouv\javaee7thesis\register\RegisterUserJSFBean.java
 C:\Users\vasouv\Documents\NetBeansProjects\JavaEE7Thesis\src\main\java\vasouv\javaee7thesis\admin\createcourse\CreateCourseJSFBean.java
 C:\Users\vasouv\Documents\NetBeansProjects\JavaEE7Thesis\src\main\java\vasouv\javaee7thesis\courses\sessionbeans\AbstractFacade.java

@@ -2,7 +2,6 @@ vasouv\javaee7thesis\register\sessionbeans\AbstractFacade.class
 vasouv\javaee7thesis\register\RegisterUserJSFBean.class
 vasouv\javaee7thesis\admin\createcourse\CreateCourseJSFBean.class
 vasouv\javaee7thesis\checkout\CheckoutBean.class
-vasouv\javaee7thesis\courses\dynamicfieldset\DBFieldset.class
 vasouv\javaee7thesis\courses\sessionbeans\LectureFacade.class
 vasouv\javaee7thesis\login\AuthenticationEJB.class
 vasouv\javaee7thesis\courses\sessionbeans\AbstractFacade.class
@@ -10,14 +9,12 @@ vasouv\javaee7thesis\courses\singlecourse\JavaEE7Course.class
 vasouv\javaee7thesis\courses\singlecourse\Java8Course.class
 vasouv\javaee7thesis\register\Groups_.class
 vasouv\javaee7thesis\register\User_.class
-vasouv\javaee7thesis\login\LogoutBean.class
 vasouv\javaee7thesis\courses\Course_.class
 vasouv\javaee7thesis\admin\showusers\ShowAllUsersJSFBean.class
 vasouv\javaee7thesis\courses\sessionbeans\CourseFacade.class
 vasouv\javaee7thesis\courses\singlecourse\AbstractCourse.class
 vasouv\javaee7thesis\courses\singlecourse\NetbeansCourse.class
 vasouv\javaee7thesis\shoppingcart\ShoppingCart.class
-vasouv\javaee7thesis\admin\createcourse\Tab.class
 vasouv\javaee7thesis\login\AuthenticationController.class
 vasouv\javaee7thesis\profile\ProfileController.class
 vasouv\javaee7thesis\register\sessionbeans\UserFacade.class
